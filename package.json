@@ -1,0 +1,33 @@
+{
+  "name": "firefox-profile-js",
+  "version": "0.0.1",
+  "description": "firefox profile for selenium WebDriverJs",
+  "main": "lib/firefox_profile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/saadtazi/firefox-profile-js.git"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "firefox",
+    "firefox profile",
+    "nodejs"
+  ],
+  "author": "Saad Tazi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saadtazi/firefox-profile-js/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "chai": "~1.8.0",
+    "sinon": "~1.7.3"
+  }
+}

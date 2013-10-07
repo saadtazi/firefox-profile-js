@@ -1,0 +1,153 @@
+{
+    // --------------------------------------------------------------------
+    // JSHint Configuration
+    // --------------------------------------------------------------------
+    //
+    // Derived from
+    // https://raw.github.com/gist/2595796/500806cafd239ace8dc94c998a8d4f7270947b12/.jshintrc
+
+    // == Enforcing Options ===============================================
+    //
+    // These options tell JSHint to be more strict towards your code. Use
+    // them if you want to allow only a safe subset of JavaScript, very
+    // useful when your codebase is shared with a big number of developers
+    // with different skill levels.
+
+    "bitwise"       : true,     // Prohibit bitwise operators (&, |, ^, etc.).
+    "camelcase"     : true,
+    "curly"         : true,     // Require {} for every new block or scope.
+    "eqeqeq"        : true,     // Require triple equals i.e. `===`.
+    // "es3"           : false,
+
+    "forin"         : false,     // Tolerate `for in` loops without `hasOwnPrototype`.
+
+    // We can use !function()(); which has a very clear warning aspect
+    "immed"         : false,    // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
+    "indent"        : 2,        // Specify indentation spacing
+
+    "latedef"       : true,     // Prohibit variable use before definition.
+    "newcap"        : true,     // Require capitalization of all constructor functions e.g. `new F()`.
+    "noarg"         : true,     // Prohibit use of `arguments.caller` and `arguments.callee`.
+    "noempty"       : true,     // Prohibit use of empty blocks.
+    "nonew"         : true,     // Prohibit use of constructors for side-effects.
+
+    // Just for this case: while(l--){}
+    "plusplus"      : false,    // Prohibit use of `++` & `--`.
+
+    "quotmark"      : "single",
+
+    "undef"         : true,     // Require all non-global variables be declared before they are used.
+    "unused"        : true,     // Warns for undefined vars
+    // I like my dot
+    "regexp"        : false,    // Prohibit `.` and `[^...]` in regular expressions.
+
+
+    // False, but should probably be true
+    "strict"        : true,    // Require `use strict` pragma in every file.
+
+    "trailing"      : true,     // Prohibit trailing whitespaces.
+
+
+    // New complexity checking: Use with caution.
+    // The max are pretty high but should be reduced as time goes on
+
+    "maxparams"     : 4,        // Max number of formal parameters allowed per function
+    "maxdepth"      : 2,        // How much nesting is acceptable
+    // I wish we'd have an independent count for module functions
+    "maxstatements" : 25,       // Max number of statements pallowed per function
+
+    // See: http://en.wikipedia.org/wiki/Cyclomatic_complexity#Limiting_complexity_during_development
+    // I have no clue how this will behave but we may relax it later
+    "maxcomplexity" : 10,       // Allowed cyclomatic complexity
+
+
+
+    // == Relaxing Options ================================================
+    //
+    // These options allow you to suppress certain types of warnings. Use
+    // them only if you are absolutely positive that you know what you are
+    // doing.
+
+    "asi"           : false,    // Tolerate Automatic Semicolon Insertion (no semicolons).
+    "boss"          : false,    // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
+    "debug"         : false,    // Allow debugger statements e.g. browser breakpoints.
+
+    // Allow it because it's already in use and would require checking for undefined and other falsy
+    "eqnull"        : true,     // Tolerate use of `== null`.
+
+    "esnext"        : false,    // Allow ES.next specific features such as `const` and `let`.
+    "evil"          : false,    // Tolerate use of `eval`.
+
+    // Allows code like ;fnDefined && fnDefined();
+    "expr"          : true,     // Tolerate `ExpressionStatement` as Programs.
+
+    "funcscope"     : false,    // Tolerate declarations of variables inside of control structures while accessing them later from the outside.
+    "globalstrict"  : false,    // Allow global "use strict" (also enables 'strict').
+    "iterator"      : false,    // Allow usage of __iterator__ property.
+    "lastsemic"     : false,    // Tolerat missing semicolons when the it is omitted for the last statement in a one-line block.
+
+    // Allows operators and punctuation to be place in front
+    "laxbreak"      : true,     // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
+
+    // Comma in front is very neat
+    "laxcomma"      : false,     // Suppress warnings about comma-first coding style.
+
+    "loopfunc"      : false,    // Allow functions to be defined within loops.
+    "multistr"      : false,    // Tolerate multi-line strings.
+    "proto"         : false,    // Tolerate __proto__ property. This property is deprecated.
+    "regexdash"     : false,    // Tolerate unescaped last dash i.e. `[-...]`.
+    "scripturl"     : false,    // Tolerate script-targeted URLs.
+    "smarttabs"     : false,    // Tolerate mixed tabs and spaces when the latter are used for alignmnent only.
+
+    // Reduce the complexity of a lot of functions
+    "shadow"        : true,     // Allows re-define variables later in code e.g. `var x=1; x=2;`.
+
+    "sub"           : false,    // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
+    "supernew"      : false,    // Tolerate `new function () { ... };` and `new Object;`.
+
+    // == Environments ====================================================
+    //
+    // These options pre-define global variables that are exposed by
+    // popular JavaScript libraries and runtime environments—such as
+    // browser or node.js.
+
+    "browser"       : true,     // Standard browser globals e.g. `window`, `document`.
+    "couch"         : false,    // Enable globals exposed by CouchDB.
+    "devel"         : false,    // Allow development statements e.g. `console.log();`.
+    "dojo"          : false,    // Enable globals exposed by Dojo Toolkit.
+
+    // We use jQuery
+    "jquery"        : true,     // Enable globals exposed by jQuery JavaScript library.
+    "mootools"      : false,    // Enable globals exposed by MooTools JavaScript framework.
+    "node"          : true,    // Enable globals available when code is running inside of the NodeJS runtime environment.
+    "nonstandard"   : false,    // Define non-standard but widely adopted globals such as escape and unescape.
+    "prototypejs"   : false,    // Enable globals exposed by Prototype JavaScript framework.
+
+    // Put it to true in an infile comment if you write rhino scripts
+    "rhino"         : false,    // Enable globals available when your code is running inside of the Rhino runtime environment.
+    "wsh"           : false,    // Enable globals available when your code is running as a script for the Windows Script Host.
+
+    // == JSLint Legacy ===================================================
+    //
+    // These options are legacy from JSLint. Aside from bug fixes they will
+    // not be improved in any way and might be removed at any point.
+
+    // _varname is really ugly and doesn't mean I won't change the var but it's not THAT important
+    "nomen"         : false,    // Prohibit use of initial or trailing underbars in names.
+    "onevar"        : false,    // Allow only one `var` statement per function.
+    "passfail"      : false,    // Stop on first error.
+    "white"         : false,    // Check against strict whitespace and indentation rules.
+
+    // == Undocumented Options ============================================
+    //
+    // While I've found these options in [example1][2] and [example2][3]
+    // they are not described in the [JSHint Options documentation][4].
+    //
+    // [4]: http://www.jshint.com/options/
+
+    // Your choice although build machine should probably have a limit
+    // "maxerr"        : 100,      // Maximum errors before stopping.
+
+    // Extra globals.
+    "predef"        : []
+}
