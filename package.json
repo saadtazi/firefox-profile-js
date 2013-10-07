@@ -2,7 +2,7 @@
   "name": "firefox-profile-js",
   "version": "0.0.1",
   "description": "firefox profile for selenium WebDriverJs",
-  "main": "lib/firefox_profile.js",
+  "main": "lib/firefox_profile",
   "directories": {
     "test": "test"
   },
@@ -29,5 +29,10 @@
     "mocha": "~1.13.0",
     "chai": "~1.8.0",
     "sinon": "~1.7.3"
+  },
+  "dependencies": {
+    "wrench": "~1.5.1",
+    "adm-zip": "~0.4.3",
+    "node-jsxml": "~0.5.0"
   }
 }
