@@ -20,6 +20,17 @@ You can add extensions to your profile, specify proxy settings, set the user pre
 
 Make sur you have selenium server running... or use 'selenium-webdriver/remote' class.
 
+### Steps
+
+* create a profile
+* modify the profile:
+** setPreference(key, value)
+** addExtension(path/To/Extenstion.xpi) or addExtension(path/To/Unpacked/Extension/)
+* create firefox capabilities and set the 'firefox_profile' capability to profile.encoded()
+* attach the capabilitites to your webdriver (using withCapabilities)
+
+### I wanna see it!
+
     var webdriver = require('selenium-webdriver');
 
     // create profile
@@ -27,13 +38,17 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     var myProfile = new FirefoxProfile();
     
     // add an extension by specifying the path to the xpi file or to the unzipped extension directory
-    f.addExtension('./spec/extensions/firefox/test-autoupdate.xpi', function() {
+    myProfile.addExtension('./spec/extensions/firefox/test-autoupdate.xpi', function() {
     	
         var capabilities = webdriver.Capabilities.firefox();
         
         // attach your newly created profile
         capabilities.set('firefox_profile', myProfile.encoded());
-
+        
+        myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
+        // required to create or update user.js
+        myProfile.updatePreferences();
+        
         // start the browser
         var wd = new webdriver.Builder().
                   withCapabilities(capabilities).
@@ -56,8 +71,7 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
 
 This class is actually a port of the [python class](https://code.google.com/p/selenium/source/browse/py/selenium/webdriver/firefox/firefox_profile.py).
 
-I currently only use the addExtension(), but I don't think the user preference work.
+I currently only use the addExtension(), I only quickly manually tested the user preference and it now seems to work.
 
-    // this DOES NOT work yet!
     f.setPreference('browser.newtab.url', 'http://saadtazi.com');
     f.updatePreferences();
