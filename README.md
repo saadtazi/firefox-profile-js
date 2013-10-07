@@ -61,4 +61,3 @@ I currently only use the addExtension(), but I don't think the user preference w
     // this DOES NOT work yet!
     f.setPreference('browser.newtab.url', 'http://saadtazi.com');
     f.updatePreferences();
-
