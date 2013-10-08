@@ -11,9 +11,9 @@ You can add extensions to your profile, specify proxy settings, set the user pre
 
 ## Installation
 
-"real" npm support is on its way... soon... maybe... Open an issue if you need it...
+~~"real" npm support is on its way... soon... maybe... Open an issue if you need it...~~ Use npm:
 
-    npm install git@github.com:saadtazi/firefox-profile-js.git
+    npm install firefox-profile
 
 
 ## Usage
@@ -24,8 +24,8 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
 
 * create a profile
 * modify the profile:
-** setPreference(key, value)
-** addExtension(path/To/Extenstion.xpi) or addExtension(path/To/Unpacked/Extension/)
+    * setPreference(key, value)
+    * addExtension(path/To/Extenstion.xpi) or addExtension(path/To/Unpacked/Extension/)
 * create firefox capabilities and set the 'firefox_profile' capability to profile.encoded()
 * attach the capabilitites to your webdriver (using withCapabilities)
 
@@ -34,7 +34,7 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     var webdriver = require('selenium-webdriver');
 
     // create profile
-    var FirefoxProfile = require('firefox-profile-js');
+    var FirefoxProfile = require('firefox-profile');
     var myProfile = new FirefoxProfile();
     
     // add an extension by specifying the path to the xpi file or to the unzipped extension directory

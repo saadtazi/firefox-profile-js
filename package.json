@@ -1,5 +1,5 @@
 {
-  "name": "firefox-profile-js",
+  "name": "firefox-profile",
   "version": "0.0.1",
   "description": "firefox profile for selenium WebDriverJs",
   "main": "lib/firefox_profile",
