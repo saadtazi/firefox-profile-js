@@ -34,11 +34,11 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     var webdriver = require('selenium-webdriver');
 
     // create profile
-    var FirefoxProfile = require('./spec/test/utils/firefox_profile');
+    var FirefoxProfile = require('firefox-profile-js');
     var myProfile = new FirefoxProfile();
     
     // add an extension by specifying the path to the xpi file or to the unzipped extension directory
-    myProfile.addExtension('./spec/extensions/firefox/test-autoupdate.xpi', function() {
+    myProfile.addExtension('./path/to/a/firefox/extension-file.xpi', function() {
     	
         var capabilities = webdriver.Capabilities.firefox();
         
