@@ -28,7 +28,8 @@
   "devDependencies": {
     "mocha": "~1.13.0",
     "chai": "~1.8.0",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "sinon-chai": "~2.4.0"
   },
   "dependencies": {
     "wrench": "~1.5.1",

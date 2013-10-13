@@ -5,8 +5,8 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 
 <a name="tableofcontents"></a>
 
-- <a name="toc_firefoxprofileprototypesetpreferencethe-"></a><a name="toc_firefoxprofileprototype"></a><a name="toc_firefoxprofile"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencethe-)
-- <a name="toc_firefoxprofileprototypeaddextensionpath-the"></a>[FirefoxProfile.prototype.addExtension](#firefoxprofileprototypeaddextensionpath-the)
+- <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a><a name="toc_firefoxprofileprototype"></a><a name="toc_firefoxprofile"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
+- <a name="toc_firefoxprofileprototypeaddextensionpath-callback"></a>[FirefoxProfile.prototype.addExtension](#firefoxprofileprototypeaddextensionpath-callback)
 - <a name="toc_firefoxprofileprototypeupdatepreferences"></a>[FirefoxProfile.prototype.updatePreferences](#firefoxprofileprototypeupdatepreferences)
 - <a name="toc_firefoxprofileprototypepath"></a>[FirefoxProfile.prototype.path](#firefoxprofileprototypepath)
 - <a name="toc_firefoxprofileprototypecanacceptuntrustedcerts"></a>[FirefoxProfile.prototype.canAcceptUntrustedCerts](#firefoxprofileprototypecanacceptuntrustedcerts)
@@ -14,15 +14,15 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypecanassumeuntrustedcertissuer"></a>[FirefoxProfile.prototype.canAssumeUntrustedCertIssuer](#firefoxprofileprototypecanassumeuntrustedcertissuer)
 - <a name="toc_firefoxprofileprototypesetassumeuntrustedcertissuertrue"></a>[FirefoxProfile.prototype.setAssumeUntrustedCertIssuer](#firefoxprofileprototypesetassumeuntrustedcertissuertrue)
 - <a name="toc_firefoxprofileprototypenativeeventsenabled"></a>[FirefoxProfile.prototype.nativeEventsEnabled](#firefoxprofileprototypenativeeventsenabled)
-- <a name="toc_firefoxprofileprototypesetnativeeventsenabledtrue"></a>[FirefoxProfile.prototype.setNativeEventsEnabled](#firefoxprofileprototypesetnativeeventsenabledtrue)
+- <a name="toc_firefoxprofileprototypesetnativeeventsenabledboolean"></a>[FirefoxProfile.prototype.setNativeEventsEnabled](#firefoxprofileprototypesetnativeeventsenabledboolean)
 - <a name="toc_firefoxprofileprototypeencoded"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencoded)
-- <a name="toc_firefoxprofileprototypesetproxya"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxya)
+- <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
 
 <a name="firefoxprofileprototype"></a>
 
 <a name="firefoxprofile"></a>
 
-# FirefoxProfile.prototype.setPreference(the, )
+# FirefoxProfile.prototype.setPreference(key, value)
 
 > Set a user preference.
 
@@ -31,8 +31,10 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 **Parameters:**
 
-- `{string} the` user preference key
-- `{boolean | string} `
+- `{string} key` the user preference key
+- `{boolean | string} value`
+
+
 
 **See:**
 
@@ -40,14 +42,14 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-# FirefoxProfile.prototype.addExtension(path, the)
+# FirefoxProfile.prototype.addExtension(path, callback)
 
 > Add an extension to the profile.
 
 **Parameters:**
 
-- `{string} path` to a xpi extension file or a unziped extension folder
-- `{function} the` callback function to call when the extension is added
+- `{string} path` path to a xpi extension file or a unziped extension folder
+- `{function} callback` the callback function to call when the extension is added
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
@@ -59,7 +61,7 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 # FirefoxProfile.prototype.path()
 
-> @return {string} path the the profile extension directory
+> @return {string} path of the profile extension directory
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
@@ -101,13 +103,13 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-# FirefoxProfile.prototype.setNativeEventsEnabled(true)
+# FirefoxProfile.prototype.setNativeEventsEnabled(boolean)
 
 > If not explicitly set, default: true
 
 **Parameters:**
 
-- `{boolean} true` to enable native events.
+- `{boolean} boolean` true to enable native events.
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
@@ -118,11 +120,11 @@ for use with remote WebDriver JSON wire protocol
 
 **Return:**
 
-`{string}`
+`{string}` zipped, base64 encoded string of the profile directory
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-# FirefoxProfile.prototype.setProxy(a)
+# FirefoxProfile.prototype.setProxy(object)
 
 > set network proxy settings.
 if proxy type is 'manual', then possible settings are: 'ftp', 'http', 'ssl', 'socks'
@@ -131,7 +133,7 @@ for other values, only the proxy.type pref will be set
 
 **Parameters:**
 
-- `{Object} a` proxy object. Mandatary attribute: proxyType
+- `{Object} object` a proxy object. Mandatary attribute: proxyType
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
