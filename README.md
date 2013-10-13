@@ -58,6 +58,12 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         wd.get('http://en.wikipedia.org');
     });
 
+## API Documentation
+
+The API documentation can be found in [doc/](./doc/).
+
+It can be regenerated using ``apidox --input lib/firefox_profile.js --output doc/firefox_profile.md``.
+Requires [apidox](https://github.com/codeactual/apidox).
 
 ## TODO
 
