@@ -1,5 +1,7 @@
 # firefox-profile-js
 
+[![Build Status](https://travis-ci.org/saadtazi/firefox-profile-js.png)](https://travis-ci.org/saadtazi/firefox-profile-js)
+
 Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs)
 
 This class allows you to:
