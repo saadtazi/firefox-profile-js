@@ -1,17 +1,17 @@
 /*jshint camelcase:false*/
-/*global describe:false, it:false, xit:false*/
+/*global describe:false, it:false, beforeEach:false*/
 
 'use strict';
 
 var chai = require('chai'),
     path = require('path'),
-    sinonChai = require('sinon-chai'),
     expect = chai.expect,
     // sinon  = require('sinon'),
     FirefoxProfile = require('../lib/firefox_profile'),
     fs = require('fs');
 
-chai.use(sinonChai);
+chai.use(require('sinon-chai'));
+chai.use(require('chai-fs'));
 
 describe('firefox_profile', function() {
   describe('#constructor', function() {
@@ -23,11 +23,11 @@ describe('firefox_profile', function() {
     it('with parameter, lock files should not be copied over', function() {
       var fp = new FirefoxProfile(path.join(__dirname, 'empty-profile'));
       expect(fp.profileDir.slice(-6)).to.be.equal('-copy/');
-      console.log(fp.profileDir);
       expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
       ['.parentlock', 'lock', 'parent.lock'].forEach(function(lockFile) {
         expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
       });
+      expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
     });
 
   });
@@ -42,7 +42,7 @@ describe('firefox_profile', function() {
       it('with newline characters', function () {
         var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string\n value');
-        expect(fp.defaultPreferences).to.have.property('test.string.value', '"test string\n value"');
+        expect(fp.defaultPreferences).to.have.property('test.string.value', '"test string\\n value"');
       });
 
     });
@@ -58,15 +58,29 @@ describe('firefox_profile', function() {
 
   describe('#updatePreferences', function() {
     describe('should correctly output a string value in user.js', function() {
-      xit('without new line characters', function() {
-        throw 'todo';
+      it('without new line characters', function() {
+        var fp = new FirefoxProfile();
+        fp.setPreference('test.string.value', 'test string value');
+        fp.updatePreferences();
+        var userPrefsContent = fs.readFileSync(fp.userPrefs, {encoding: 'utf8'});
+        expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string value");\n');
       });
-      xit('with new line characters', function() {
-        throw 'todo';
+      it('with new line characters', function() {
+        var fp = new FirefoxProfile();
+        fp.setPreference('test.string.value', 'test string\nvalue');
+        fp.updatePreferences();
+        var userPrefsContent = fs.readFileSync(fp.userPrefs, {encoding: 'utf8'});
+        expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string\\nvalue");\n');
       });
     });
-    xit('should correctly output a boolean value in user.js', function() {
-      throw 'todo';
+    it('should correctly output a boolean value in user.js', function() {
+      var fp = new FirefoxProfile();
+      fp.setPreference('test.true.boolean', true);
+      fp.setPreference('test.false.boolean', false);
+      fp.updatePreferences();
+      var userPrefsContent = fs.readFileSync(fp.userPrefs, {encoding: 'utf8'});
+      expect(userPrefsContent).to.contain('user_pref("test.true.boolean", true);\n');
+      expect(userPrefsContent).to.contain('user_pref("test.false.boolean", false);\n');
     });
   });
 

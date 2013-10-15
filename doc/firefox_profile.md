@@ -5,7 +5,8 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 
 <a name="tableofcontents"></a>
 
-- <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a><a name="toc_firefoxprofileprototype"></a><a name="toc_firefoxprofile"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
+- <a name="toc_firefoxprofileprofiledirectory"></a>[FirefoxProfile](#firefoxprofileprofiledirectory)
+- <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a><a name="toc_firefoxprofileprototype"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
 - <a name="toc_firefoxprofileprototypeaddextensionpath-callback"></a>[FirefoxProfile.prototype.addExtension](#firefoxprofileprototypeaddextensionpath-callback)
 - <a name="toc_firefoxprofileprototypeupdatepreferences"></a>[FirefoxProfile.prototype.updatePreferences](#firefoxprofileprototypeupdatepreferences)
 - <a name="toc_firefoxprofileprototypepath"></a>[FirefoxProfile.prototype.path](#firefoxprofileprototypepath)
@@ -18,9 +19,17 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypeencoded"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencoded)
 - <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
 
-<a name="firefoxprofileprototype"></a>
+# FirefoxProfile(profileDirectory)
 
-<a name="firefoxprofile"></a>
+> Initialize a new instance of a Firefox Profile
+
+**Parameters:**
+
+- `{String | null} profileDirectory` optional. if provided, it will copy the directory
+
+<sub>Go: [TOC](#tableofcontents)</sub>
+
+<a name="firefoxprofileprototype"></a>
 
 # FirefoxProfile.prototype.setPreference(key, value)
 
@@ -31,14 +40,14 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 **Parameters:**
 
-- `{string} key` the user preference key
+- `{string} key` - the user preference key
 - `{boolean | string} value`
 
 
 
 **See:**
 
-- [](http://kb.mozillazine.org/About:config_entries)
+- [about:config](http://kb.mozillazine.org/About:config_entries)
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
@@ -48,8 +57,8 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 **Parameters:**
 
-- `{string} path` path to a xpi extension file or a unziped extension folder
-- `{function} callback` the callback function to call when the extension is added
+- `{string} path` - path to a xpi extension file or a unziped extension folder
+- `{function} callback` - the callback function to call when the extension is added
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 

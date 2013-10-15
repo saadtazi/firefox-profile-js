@@ -62,14 +62,26 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
 
 The API documentation can be found in [doc/](./doc/).
 
-It can be regenerated using ``apidox --input lib/firefox_profile.js --output doc/firefox_profile.md``.
-Requires [apidox](https://github.com/codeactual/apidox).
+It can be regenerated using ``grunt docs``.
+Requires [apidox](https://github.com/codeactual/apidox) - listed in devDependencies.
+
+## Tests
+
+    mocha
+    # or
+    grunt mochaTest:test
+
+## Coverage
+    
+    grunt mochaTest:coverage
+
+Generates doc/coverage.html
 
 ## TODO
 
-* add documentation and comments
-* write tests
-* fix bugs
+* ~~add documentation and comments~~
+* ~~write tests~~
+* ~~fix bugs~~
 * write more tests
 * fix more bugs
 
@@ -77,7 +89,11 @@ Requires [apidox](https://github.com/codeactual/apidox).
 
 This class is actually a port of the [python class](https://code.google.com/p/selenium/source/browse/py/selenium/webdriver/firefox/firefox_profile.py).
 
-I currently only use the addExtension(), I only quickly manually tested the user preference and it now seems to work.
+I currently only use the addExtension(), ~~I only quickly manually tested the user preference~~ I am in the process of ading more tests.
 
     f.setPreference('browser.newtab.url', 'http://saadtazi.com');
     f.updatePreferences();
+
+## Found a bug?
+
+Open a [github issue](https://github.com/saadtazi/firefox-profile-js/issues).
