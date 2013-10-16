@@ -57,19 +57,21 @@ describe('firefox_profile', function() {
   });
 
   describe('#updatePreferences', function() {
+    // compat node 0.8 & 0.10
+    var encoding = process.version.indexOf('v0.8.') == 0 ? 'utf8': {encoding: 'utf8'};
     describe('should correctly output a string value in user.js', function() {
       it('without new line characters', function() {
         var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string value');
         fp.updatePreferences();
-        var userPrefsContent = fs.readFileSync(fp.userPrefs);
+        var userPrefsContent = fs.readFileSync(fp.userPrefs, encoding);
         expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string value");\n');
       });
       it('with new line characters', function() {
         var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string\nvalue');
         fp.updatePreferences();
-        var userPrefsContent = fs.readFileSync(fp.userPrefs);
+        var userPrefsContent = fs.readFileSync(fp.userPrefs, encoding);
         expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string\\nvalue");\n');
       });
     });
@@ -78,7 +80,7 @@ describe('firefox_profile', function() {
       fp.setPreference('test.true.boolean', true);
       fp.setPreference('test.false.boolean', false);
       fp.updatePreferences();
-      var userPrefsContent = fs.readFileSync(fp.userPrefs);
+      var userPrefsContent = fs.readFileSync(fp.userPrefs, encoding);
       expect(userPrefsContent).to.contain('user_pref("test.true.boolean", true);\n');
       expect(userPrefsContent).to.contain('user_pref("test.false.boolean", false);\n');
     });
