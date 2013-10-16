@@ -78,7 +78,7 @@ describe('firefox_profile', function() {
       fp.setPreference('test.true.boolean', true);
       fp.setPreference('test.false.boolean', false);
       fp.updatePreferences();
-      var userPrefsContent = fs.readFileSync(fp.userPrefs, {encoding: 'utf8'});
+      var userPrefsContent = fs.readFileSync(fp.userPrefs);
       expect(userPrefsContent).to.contain('user_pref("test.true.boolean", true);\n');
       expect(userPrefsContent).to.contain('user_pref("test.false.boolean", false);\n');
     });
