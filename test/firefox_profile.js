@@ -62,14 +62,14 @@ describe('firefox_profile', function() {
         var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string value');
         fp.updatePreferences();
-        var userPrefsContent = fs.readFileSync(fp.userPrefs, {encoding: 'utf8'});
+        var userPrefsContent = fs.readFileSync(fp.userPrefs);
         expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string value");\n');
       });
       it('with new line characters', function() {
         var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string\nvalue');
         fp.updatePreferences();
-        var userPrefsContent = fs.readFileSync(fp.userPrefs, {encoding: 'utf8'});
+        var userPrefsContent = fs.readFileSync(fp.userPrefs);
         expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string\\nvalue");\n');
       });
     });
