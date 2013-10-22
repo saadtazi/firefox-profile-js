@@ -16,7 +16,7 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypesetassumeuntrustedcertissuertrue"></a>[FirefoxProfile.prototype.setAssumeUntrustedCertIssuer](#firefoxprofileprototypesetassumeuntrustedcertissuertrue)
 - <a name="toc_firefoxprofileprototypenativeeventsenabled"></a>[FirefoxProfile.prototype.nativeEventsEnabled](#firefoxprofileprototypenativeeventsenabled)
 - <a name="toc_firefoxprofileprototypesetnativeeventsenabledboolean"></a>[FirefoxProfile.prototype.setNativeEventsEnabled](#firefoxprofileprototypesetnativeeventsenabledboolean)
-- <a name="toc_firefoxprofileprototypeencoded"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencoded)
+- <a name="toc_firefoxprofileprototypeencodedfunction"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencodedfunction)
 - <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
 
 # FirefoxProfile(profileDirectory)
@@ -122,14 +122,14 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-# FirefoxProfile.prototype.encoded()
+# FirefoxProfile.prototype.encoded(function)
 
 > return zipped, base64 encoded string of the profile directory
 for use with remote WebDriver JSON wire protocol
 
-**Return:**
+**Parameters:**
 
-`{string}` zipped, base64 encoded string of the profile directory
+- `{Function} function` a callback function with first params as a zipped, base64 encoded string of the profile directory
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
