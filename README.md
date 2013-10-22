@@ -90,6 +90,7 @@ Generates doc/coverage.html
 * ~~fix bugs~~
 * write more tests
 * fix more bugs
+* clean tmp directory on process 'exit' and 'SIGINT'
 
 ## Disclaimer
 
