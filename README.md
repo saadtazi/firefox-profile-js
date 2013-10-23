@@ -45,19 +45,23 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         var capabilities = webdriver.Capabilities.firefox();
         
         // attach your newly created profile
-        capabilities.set('firefox_profile', myProfile.encoded());
+        myProfile.encoded(function(prof) {
+            capabilities.set('firefox_profile', myProfile.encoded());
+            myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
+            // required to create or update user.js
+            myProfile.updatePreferences();
+            
+            // start the browser
+            var wd = new webdriver.Builder().
+                      withCapabilities(capabilities).
+                      build();
+            
+            // woot!
+            wd.get('http://en.wikipedia.org');
+        });
         
-        myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
-        // required to create or update user.js
-        myProfile.updatePreferences();
         
-        // start the browser
-        var wd = new webdriver.Builder().
-                  withCapabilities(capabilities).
-                  build();
         
-        // woot!
-        wd.get('http://en.wikipedia.org');
     });
 
 ## API Documentation
@@ -86,6 +90,7 @@ Generates doc/coverage.html
 * ~~fix bugs~~
 * write more tests
 * fix more bugs
+* clean tmp directory on process 'exit' and 'SIGINT'
 
 ## Disclaimer
 

@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "firefox profile for selenium WebDriverJs",
   "main": "lib/firefox_profile",
   "directories": {
@@ -41,6 +41,7 @@
     "wrench": "~1.5.1",
     "adm-zip": "~0.4.3",
     "xml2js": "~0.2.8",
-    "node-uuid": "~1.4.1"
+    "node-uuid": "~1.4.1",
+    "archiver": "~0.4.10"
   }
 }
