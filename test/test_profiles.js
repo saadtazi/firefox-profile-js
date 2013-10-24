@@ -11,7 +11,7 @@ module.exports = {
   profileWithPngExtension: {
     extensions: [path.join(__dirname, 'extensions/png-extension.xpi')],
     // this is no the same string everytime... just commparing fixed part (the image?)
-    zipExerpts: ['EMAAAAAAAAAAAAAAAA1AAAAZX', 'xOKwhif9bEiZ9Ct']
+    zipExerpts: ['EMAAAAAAAAAAAAAAAA', 'xOKwhif9bEiZ9Ct']
   },
   profileWithExtNoNamespace: {
     extensions: [path.join(__dirname, 'extensions/no-namespace.xpi')],

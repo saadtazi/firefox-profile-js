@@ -1,5 +1,5 @@
 /*jshint camelcase:false*/
-/*global describe:false, it:false, beforeEach:false*/
+/*global describe:false, it:false, beforeEach:false, xit:false*/
 
 'use strict';
 
@@ -97,7 +97,7 @@ describe('#encoded', function() {
     });
   });
 
-  it('should generate valid encoded profile with ./empty-profile', function(done) {
+  xit('should generate valid encoded profile with ./empty-profile', function(done) {
     var fp = new FirefoxProfile(testProfiles.emptyProfile.path),
         testProfile = testProfiles.emptyProfile;
     fp.encoded(function(zippedProfile) {
@@ -109,7 +109,7 @@ describe('#encoded', function() {
     });
   });
 
-  it.only('should generate valid encoded profile with extension that contains png files (zipped png)', function(done) {
+  xit('should generate valid encoded profile with extension that contains png files (zipped png)', function(done) {
     var fp = new FirefoxProfile(),
         testProfile = testProfiles.profileWithPngExtension;
     fp.addExtensions(testProfile.extensions, function() {
@@ -124,7 +124,7 @@ describe('#encoded', function() {
   });
 
   
-  it('should generate valid encoded profile with extension that has no specified namespace', function(done) {
+  xit('should generate valid encoded profile with extension that has no specified namespace', function(done) {
     var fp = new FirefoxProfile(),
         testProfile = testProfiles.profileWithExtNoNamespace;
     fp.addExtensions(testProfile.extensions, function() {
