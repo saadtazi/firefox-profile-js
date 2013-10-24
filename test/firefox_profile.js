@@ -109,12 +109,12 @@ describe('#encoded', function() {
     });
   });
 
-  it('should generate valid encoded profile with extension that contains png files (zipped)', function(done) {
+  it.only('should generate valid encoded profile with extension that contains png files (zipped png)', function(done) {
     var fp = new FirefoxProfile(),
         testProfile = testProfiles.profileWithPngExtension;
     fp.addExtensions(testProfile.extensions, function() {
       fp.encoded(function(zippedProfile) {
-
+        // console.log(zippedProfile);
         testProfile.zipExerpts.forEach(function(exerpt) {
           expect(zippedProfile).to.contain(exerpt);
         });
