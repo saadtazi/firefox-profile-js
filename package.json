@@ -43,6 +43,7 @@
     "xml2js": "~0.2.8",
     "node-uuid": "~1.4.1",
     "archiver": "~0.4.10",
+    "lazystream": "~0.1.0",
     "async": "~0.2.9"
   }
 }

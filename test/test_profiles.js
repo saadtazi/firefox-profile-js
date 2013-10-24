@@ -15,7 +15,7 @@ module.exports = {
   },
   profileWithExtNoNamespace: {
     extensions: [path.join(__dirname, 'extensions/no-namespace.xpi')],
-    zipExerpts: ['OWEMAAAAAAAAAAAAAAAA/AAAAZXh0ZW5zaW9ucy9uby1uYW1lc3BhY2V', 'AAJYEAAAtAAAAAAAAAAAAAAAAACwJAABleHRlbnNpb25zL25vLW5hbWVzcGFjZUB0ZXN0LnRlc3']
+    zipExerpts: ['EMAAAAAAAAAAAAAAAA/AAAA', 'CAAAvwgAAD8AAAAAAAAAAAAAAAAAAAAAAGV4', 'wEAAJYEAAAtAAAAAAAAAAAAAAAAACwJAAB']
   }
 };
 
