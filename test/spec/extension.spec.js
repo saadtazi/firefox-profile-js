@@ -49,12 +49,12 @@ describe('install extension', function() {
           accessKey
         );
 
-        browser.on('status', function(info) {
-          console.log(info);
-        });
-        browser.on('command', function(meth, path, data) {
-          console.log(' > ' + meth, path, data || '');
-        });
+        // browser.on('status', function(info) {
+        //   console.log(info);
+        // });
+        // browser.on('command', function(meth, path, data) {
+        //   console.log(' > ' + meth, path, data || '');
+        // });
         browser
         .init({
           browserName:'firefox',
@@ -66,7 +66,7 @@ describe('install extension', function() {
           // dirxml, $$ ... and console.table are defined by firebug
           // but only console.table is available from js (not in console)
           // because table method is probably added to the regular console 
-        .eval('console.tablee')
+        .eval('console.table')
         .should.eventually.include('function').then(function() {
           done();
         })
