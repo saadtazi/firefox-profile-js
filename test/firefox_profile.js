@@ -96,47 +96,7 @@ describe('#encoded', function() {
       done();
     });
   });
-
-  xit('should generate valid encoded profile with ./empty-profile', function(done) {
-    var fp = new FirefoxProfile(testProfiles.emptyProfile.path),
-        testProfile = testProfiles.emptyProfile;
-    fp.encoded(function(zippedProfile) {
-      // expect(zippedProfile).to.be.equal(testProfiles.emptyProfile.expectedZip);
-      testProfile.zipExerpts.forEach(function(exerpt) {
-        expect(zippedProfile).to.contain(exerpt);
-      });
-      done();
-    });
-  });
-
-  xit('should generate valid encoded profile with extension that contains png files (zipped png)', function(done) {
-    var fp = new FirefoxProfile(),
-        testProfile = testProfiles.profileWithPngExtension;
-    fp.addExtensions(testProfile.extensions, function() {
-      fp.encoded(function(zippedProfile) {
-        // console.log(zippedProfile);
-        testProfile.zipExerpts.forEach(function(exerpt) {
-          expect(zippedProfile).to.contain(exerpt);
-        });
-        done();
-      });
-    });
-  });
-
-  
-  xit('should generate valid encoded profile with extension that has no specified namespace', function(done) {
-    var fp = new FirefoxProfile(),
-        testProfile = testProfiles.profileWithExtNoNamespace;
-    fp.addExtensions(testProfile.extensions, function() {
-      fp.encoded(function(zippedProfile) {
-
-        testProfile.zipExerpts.forEach(function(exerpt) {
-          expect(zippedProfile).to.contain(exerpt);
-        });
-        done();
-      });
-    });
-  });
-
+  // encoded() results is not constant for more 'complex' profiles
+  // other tests are done in test/spec/ tests
 
 });

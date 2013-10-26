@@ -16,6 +16,10 @@ module.exports = {
   profileWithExtNoNamespace: {
     extensions: [path.join(__dirname, 'extensions/no-namespace.xpi')],
     zipExerpts: ['EMAAAAAAAAAAAAAAAA/AAAA', 'CAAAvwgAAD8AAAAAAAAAAAAAAAAAAAAAAGV4', 'wEAAJYEAAAtAAAAAAAAAAAAAAAAACwJAAB']
+  },
+  profileWithFirebug: {
+    extensions: [path.join(__dirname, 'extensions/firebug-1.12.4-fx.xpi')]
+    
   }
 };
 
