@@ -55,7 +55,8 @@ describe('install extension', function() {
         browser
         .init({
           browserName:'firefox',
-          firefox_profile: zippedProfile
+          firefox_profile: zippedProfile,
+          name: 'extension-test'
         })
         .get('http://saadtazi.com')
         .sleep(1000)
@@ -65,12 +66,12 @@ describe('install extension', function() {
           // because table method is probably added to the regular console 
         .eval('console.table')
         .should.eventually.include('function').then(function() {
-          browser.quit();
           done();
+          return browser.quit();
         })
         .fail(function(err) {
-          browser.quit();
           done(err);
+          return browser.quit();
         });
       });
     });
