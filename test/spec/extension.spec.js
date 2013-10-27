@@ -25,6 +25,11 @@ var accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
 //       at Request.self.callback (/Users/saadtazi/Projects/firefox-profile-js/node_modules/wd/node_modules/request/index.js:148:22)
 // before(function(done) {done();})
 
+// also the browser quits when running locally, not in saucelabs
+// so adding this... didn't help...
+after(function() {
+  browser && browser.quit();
+});
 
 describe('install extension', function() {
   this.timeout(0);
@@ -65,12 +70,12 @@ describe('install extension', function() {
           // because table method is probably added to the regular console 
         .eval('console.table')
         .should.eventually.include('function').then(function() {
+          browser.quit();
           done();
-          return browser.quit();
         })
         .fail(function(err) {
+          browser.quit();
           done(err);
-          return browser.quit();
         });
       });
     });

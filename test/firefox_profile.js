@@ -71,12 +71,15 @@ describe('firefox_profile', function() {
     it('should allow to set manual proxy', function() {
       var fp = new FirefoxProfile();
       fp.setProxy({
-        proxyType: 'manual',
-        httpProxy: 'http-proxy-server:8080',
-        ftpProxy: 'ftp-proxy-server:2121',
-        sslProxy: 'ssl-proxy-server:4443',
-        socksProxy: 'socks-proxy-server:9999',
+        proxyType : 'manual',
+        noProxy   : 'http://google.com, http://mail.google.com',
+        httpProxy : 'http-proxy-server:8080',
+        ftpProxy  : 'ftp-proxy-server:2121',
+        sslProxy  : 'ssl-proxy-server:4443',
+        socksProxy: 'socks-proxy-server:9999'
       });
+      expect(fp.defaultPreferences).to.have.property('network.proxy.type', '1');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.no_proxies_on', '"http://google.com, http://mail.google.com"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.http', '"http-proxy-server"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.http_port', '"8080"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.ftp', '"ftp-proxy-server"');
@@ -87,7 +90,20 @@ describe('firefox_profile', function() {
       expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');
       
     });
+
+    it('should allow to set auto-config proxy', function() {
+      var fp = new FirefoxProfile();
+      fp.setProxy({
+        proxyType    : 'pac',
+        autoconfigUrl: 'http://url-to-proxy-auto-config'
+      });
+      expect(fp.defaultPreferences).to.have.property('network.proxy.type', '2');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.autoconfig_url', '"http://url-to-proxy-auto-config"');
+      
+    });
   });
+
+  
 
   describe('#updatePreferences', function() {
     // compat node 0.8 & 0.10
@@ -169,5 +185,75 @@ describe('firefox_profile', function() {
       expect(fp._sanitizePref('true')).to.be.true;
       expect(fp._sanitizePref('false')).to.be.false;
     });
+  });
+
+  describe('#addExtension', function() {
+    it('should unzip extensions in profile folder' , function(done) {
+      var fp = new FirefoxProfile();
+      fp.addExtension(path.join(__dirname, 'extensions/png-extension.xpi'), function() {
+        var exensionDir = path.join(fp.profileDir, 'extensions', 'id@test.test');
+        expect(fs.statSync(exensionDir).isDirectory()).to.be.true;
+        expect(fs.statSync(path.join(exensionDir, 'install.rdf')).isFile()).to.be.true;
+        expect(fs.statSync(path.join(exensionDir, 'breakpointConditionEditor.png')).isFile()).to.be.true;
+        done();
+
+      });
+    });
+  });
+
+  describe('#path', function() {
+    it('should return the profile directory', function() {
+      var fp = new FirefoxProfile();
+      expect(fp.path()).to.be.equal(fp.profileDir);
+    });
+  });
+  describe('#canAcceptUntrustedCerts', function() {
+    it('should return default value if not set', function() {
+      var fp = new FirefoxProfile();
+      expect(fp.canAcceptUntrustedCerts()).to.be.true;
+    });
+  });
+
+  describe('#setAcceptUntrustedCerts', function() {
+    it('should properly set value', function() {
+      var fp = new FirefoxProfile();
+      fp.setAcceptUntrustedCerts(false);
+      expect(fp.canAcceptUntrustedCerts()).to.be.false;
+
+    });
+  });
+
+  describe('#canAssumeUntrustedCertIssuer', function() {
+    it('should return default value if not set', function() {
+      var fp = new FirefoxProfile();
+      expect(fp.canAssumeUntrustedCertIssuer()).to.be.true;
+    });
+  });
+
+  describe('#setAssumeUntrustedCertIssuer', function() {
+    it('should properly set value', function() {
+      var fp = new FirefoxProfile();
+      fp.setAssumeUntrustedCertIssuer(0); // faulty
+      expect(fp.canAssumeUntrustedCertIssuer()).to.be.false;
+
+    });
+  });
+  describe('#nativeEventsEnabled', function() {
+    it('should return default value if not set', function() {
+      var fp = new FirefoxProfile();
+      expect(fp.nativeEventsEnabled()).to.be.true;
+    });
+  });
+
+  describe('#setNativeEventsEnabled', function() {
+    it('should properly set value', function() {
+      var fp = new FirefoxProfile();
+      fp.setNativeEventsEnabled(false); // faulty
+      expect(fp.nativeEventsEnabled()).to.be.false;
+
+    });
+  });
+  describe('#path', function() {
+
   });
 });

@@ -36,7 +36,6 @@
     "sinon-chai": "~2.4.0",
     "chai-fs": "0.0.3",
     "grunt": "~0.4.1",
-    "grunt-mocha-test": "~0.7.0",
     "blanket": "~1.1.5",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-apidox": "~0.1.3",

@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
   'use strict';
   grunt.loadNpmTasks('grunt-apidox');
-  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-cov');
 
@@ -22,9 +21,10 @@ module.exports = function(grunt) {
       options: {
         reporter: 'html-cov',
         // require: ['should']
-        output: './coverage/coverage.html'
+        output: './coverage/coverage.html',
+        // files: ['test/*.js', 'test/coverage/*.js']
       },
-      all: ['test/**/*.js'],
+      all: ['test/**/*.js']
 
     },
     apidox: {
@@ -42,6 +42,5 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('default', 'mochaTest:test');
   grunt.registerTask('docs', 'apidox');
 };
