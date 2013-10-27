@@ -4,16 +4,21 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-cov');
 
-  var coverageOptions = {};
-  if (process.env.COVERALLS_REPO_TOKEN) {
+  var coverageOptions = {},
+      coverallsRepoToken = process.env.COVERALLS_REPO_TOKEN,
+      travisJobId = process.env.TRAVIS_JOB_ID;
+  if (coverallsRepoToken && travisJobId) {
     coverageOptions = {
-        options: {
-          coveralls: {
-            serviceName: 'travis-ci',
-            repoToken: process.env.COVERALLS_REPO_TOKEN
-          }
+      options: {
+        coveralls: {
+          serviceName: 'travis-ci'
         }
-      };
+      }
+    };
+    if (coverallsRepoToken) {
+      coverageOptions.repoToken = coverallsRepoToken;
+    }
+
   }
   grunt.initConfig({
     mochacov: {
