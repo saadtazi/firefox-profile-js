@@ -8,5 +8,5 @@ env:
   - secure: hZLu1RMl3AMPCyNFp6w7Ml6MIbMGNkNnlX4a/nTDyRFfeYr1cGNpkcR3aDujSPGMWpUPtaK13HRQNiv+5KwUD4H07DxibnJx6BjRqJYtS4BlwDXVlgUAuat50INNZGe/ovbGDjM784DFxfnb+6oYVIWS9OX+NdyGSQVOH1vFWPw=
   - secure: dS/t0sNKcBmR1gD9KA7Ks3Gjtl2MjRNcDCEIGajO86ZhU774zhOxtd58upgZx7lVCzGJxM9wLrUD7SeSthdkNQOndOdJFJe9pQWfY5zjj58t/XAgiH0VY8qrIf9AnEtBdvorSQRwKPRVE5ZkvYUpoRn4Rj9fnBCzw7OPFK/08Kc=
 
-before_script: npm install -g grunt
+before_script: npm install -g grunt-cli
 script: grunt travis 
