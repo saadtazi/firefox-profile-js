@@ -4,9 +4,9 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
     <RDF:Description RDF:about="urn:mozilla:install-manifest"
-                     em:id="id@test.test"
-                     em:name="test-extension"
-                     em:version="2.1.0"
+                     em:id="with-namespace@test.test"
+                     em:name="test-extension with namespace"
+                     em:version="2.2.99"
                      em:type="2"
                      em:description="Test extension description."
                      em:creator="Test Creator"
@@ -15,7 +15,7 @@
         <em:file RDF:resource="urn:mozilla:extension:file:"/>
         <em:targetApplication RDF:resource="rdf:#$dkOEQ2"/>
 
-        <em:unpack>true</em:unpack>
+        <em:unpack>false</em:unpack>
 
 
     </RDF:Description>

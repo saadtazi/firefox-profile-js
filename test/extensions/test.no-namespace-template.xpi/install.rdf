@@ -5,7 +5,7 @@
 
     <Description RDF:about="urn:mozilla:install-manifest"
                      em:id="no-namespace@test.test"
-                     em:name="test-extension"
+                     em:name="test-extension without namespace"
                      em:version="2.1.0"
                      em:type="2"
                      em:description="Test extension description no namespace."

@@ -86,17 +86,56 @@ describe('firefox_profile', function() {
       expect(userPrefsContent).to.contain('user_pref("test.false.boolean", false);\n');
     });
   });
-});
+  describe('#encoded', function() {
+    it('should work with a brand new profile', function(done) {
+      var fp = new FirefoxProfile();
+      fp.encoded(function(zippedProfile) {
+        expect(zippedProfile).to.be.equal(testProfiles.brandNewProfile.expectedZip);
+        done();
+      });
+      // encoded() results is not constant for more 'complex' profiles
+      // other encoded tests are done in test/spec/ tests
+    });
 
-describe('#encoded', function() {
-  it('should work with a brand new profile', function(done) {
-    var fp = new FirefoxProfile();
-    fp.encoded(function(zippedProfile) {
-      expect(zippedProfile).to.be.equal(testProfiles.brandNewProfile.expectedZip);
-      done();
+  });
+  // 'id': null,
+  // 'name': null,
+  // 'unpack': true,
+  // 'version': null
+  describe('#__addonDetails', function() {
+    it('should correctly retrieve addon details from rdf that does not use namespace', function(done) {
+      
+      var fp = new FirefoxProfile();
+      fp._addonDetails(path.join(__dirname, 'extensions/test.no-namespace-template.xpi'), function(extDetails) {
+        expect(extDetails).to.be.eql({
+          id: 'no-namespace@test.test',
+          name: 'test-extension without namespace',
+          unpack: true,
+          version: '2.1.0'
+        });
+        done();
+      });
+    });
+
+    it('should correctly retrieve addon details from rdf that uses namespace', function(done) {
+      var fp = new FirefoxProfile();
+      fp._addonDetails(path.join(__dirname, 'extensions/test.template.xpi'), function(extDetails) {
+        expect(extDetails).to.be.eql({
+          id: 'with-namespace@test.test',
+          name: 'test-extension with namespace',
+          unpack: false,
+          version: '2.2.99'
+        });
+        done();
+      });
     });
   });
-  // encoded() results is not constant for more 'complex' profiles
-  // other tests are done in test/spec/ tests
 
+  describe('#_sanitizePref()', function() {
+    it('you correctly deal you boolean values', function() {
+      var fp = new FirefoxProfile();
+      expect(fp._sanitizePref('true')).to.be.true;
+      expect(fp._sanitizePref('false')).to.be.false;
+    });
+  });
 });

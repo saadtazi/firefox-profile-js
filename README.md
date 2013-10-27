@@ -2,14 +2,18 @@
 
 [![Build Status](https://travis-ci.org/saadtazi/firefox-profile-js.png)](https://travis-ci.org/saadtazi/firefox-profile-js)
 
-Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs)
+Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs),
+[admc/wd](https://github.com/admc/wd) or any other library that allows you to set capabilities.
 
 This class allows you to:
 
 * create a firefox profile
 * use an existing profile (by specifying path)
+* add extensions to your profile,
+* specify proxy settings, 
+* set the user preferences... 
 
-You can add extensions to your profile, specify proxy settings, set the user preferences... More info on user preferences [here](http://kb.mozillazine.org/User.js_file).
+More info on user preferences [here](http://kb.mozillazine.org/User.js_file).
 
 ## Installation
 
@@ -33,36 +37,75 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
 
 ### I wanna see it!
 
+    ///////////////////////////////////////////////////////////////////
+    // with selenium webdriverJs
+    // installs firebug 
+    // and make http://saadtazi.com the url that is opened on new tabs
+    ///////////////////////////////////////////////////////////////////
+
     var webdriver = require('selenium-webdriver');
 
     // create profile
     var FirefoxProfile = require('firefox-profile');
     var myProfile = new FirefoxProfile();
     
-    // add an extension by specifying the path to the xpi file or to the unzipped extension directory
-    myProfile.addExtension('./path/to/a/firefox/extension-file.xpi', function() {
+    // you can add an extension by specifying the path to the xpi file 
+    // or to the unzipped extension directory
+    myProfile.addExtension('test/extensions/firebug-1.12.4-fx.xpi', function() {
     	
         var capabilities = webdriver.Capabilities.firefox();
         
         // attach your newly created profile
         myProfile.encoded(function(prof) {
-            capabilities.set('firefox_profile', myProfile.encoded());
-            myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
-            // required to create or update user.js
-            myProfile.updatePreferences();
+            myProfile.encoded(function(encodedProfile) {
+                capabilities.set('firefox_profile', encodedProfile);
+
+                // you can set firefox preferences
+                myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
+
+                // it is required to create or update user.js
+                // only needed if you set some preferences
+                myProfile.updatePreferences();
+                
+                // start the browser
+                var wd = new webdriver.Builder().
+                          withCapabilities(capabilities).
+                          build();
+                
+                // woot!
+                wd.get('http://en.wikipedia.org');
+            });
             
-            // start the browser
-            var wd = new webdriver.Builder().
-                      withCapabilities(capabilities).
-                      build();
-            
-            // woot!
-            wd.get('http://en.wikipedia.org');
         });
-        
-        
-        
     });
+
+    ///////////////////////////////////////////////////
+    // with admc/wd
+    // installs firebug, and make it active by default
+    ///////////////////////////////////////////////////
+    
+    var FirefoxProfile = require('./lib/firefox_profile'),
+        wd = require('wd');
+
+    var fp = new FirefoxProfile();
+    fp.setPreference('extensions.firebug.allPagesActivation', 'on');
+    fp.setPreference('extensions.firebug.console.enableSites', true);
+    fp.setPreference('extensions.firebug.defaultPanelName', 'console');
+    fp.updatePreferences();
+    // you can install multiple extensions at the same time
+    fp.addExtensions(['test/extensions/firebug-1.12.4-fx.xpi'], function() {
+        fp.encoded(function(zippedProfile) {
+            browser = wd.promiseChainRemote();
+            browser.init({
+              browserName:'firefox',
+              // set firefox capabilities
+              firefox_profile: zippedProfile
+            }).
+            // woOot!!
+            get('http://en.wikipedia.org');
+        });
+    });
+
 
 ## API Documentation
 
@@ -95,11 +138,6 @@ Generates doc/coverage.html
 ## Disclaimer
 
 This class is actually a port of the [python class](https://code.google.com/p/selenium/source/browse/py/selenium/webdriver/firefox/firefox_profile.py).
-
-I currently only use the addExtension(), ~~I only quickly manually tested the user preference~~ I am in the process of ading more tests.
-
-    f.setPreference('browser.newtab.url', 'http://saadtazi.com');
-    f.updatePreferences();
 
 ## Found a bug?
 
