@@ -120,11 +120,11 @@ Requires [apidox](https://github.com/codeactual/apidox) - listed in devDependenc
 
     mocha
     # or
-    grunt mochaTest:test
+    grunt mochacov:unit
 
 ## Coverage
     
-    grunt mochacov
+    grunt mochacov:coverage
 
 Generates doc/coverage.html
 

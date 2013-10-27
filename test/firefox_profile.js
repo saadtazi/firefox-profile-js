@@ -8,13 +8,14 @@ var chai            = require('chai'),
     expect          = chai.expect,
     FirefoxProfile  = require('../lib/firefox_profile'),
     fs              = require('fs'),
-    testProfiles    = require('./test_profiles'),
-    sinon           = require('sinon'),
-    sinonChai       = require("sinon-chai");
+    testProfiles    = require('./test_profiles')
+    // sinon           = require('sinon'),
+    // sinonChai       = require("sinon-chai")
+    ;
 
 
 
-chai.use(require('sinon-chai'));
+// chai.use(require('sinon-chai'));
 chai.use(require('chai-fs'));
 
 describe('firefox_profile', function() {

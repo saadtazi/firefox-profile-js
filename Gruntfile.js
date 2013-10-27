@@ -4,32 +4,35 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-cov');
 
-  var coverageOptions = {},
-      coverallsRepoToken = process.env.COVERALLS_REPO_TOKEN,
-      travisJobId = process.env.TRAVIS_JOB_ID;
-  if (coverallsRepoToken && travisJobId) {
-    coverageOptions = {
-      options: {
-        coveralls: {
-          serviceName: 'travis-ci'
-        }
-      }
-    };
-    if (coverallsRepoToken) {
-      coverageOptions.repoToken = coverallsRepoToken;
-    }
+  var coverallsRepoToken = process.env.COVERALLS_REPO_TOKEN,
+      coveralls = { serviceName: 'travis-ci' };
 
+  // for local run...
+  if (coverallsRepoToken) {
+    coveralls.repoToken = coverallsRepoToken;
   }
+
   grunt.initConfig({
     mochacov: {
-      coverage: coverageOptions,
-      options: {
+      unit: {
+        options: {
+          reporter: 'spec'
+        }
+      },
+      coverage: {
         reporter: 'html-cov',
         // require: ['should']
-        output: './coverage/coverage.html',
-        // files: ['test/*.js', 'test/coverage/*.js']
+        output: './coverage/coverage.html'
       },
-      all: ['test/**/*.js']
+      coveralls: {
+        options: {
+          coveralls: coveralls
+        }
+      },
+      options: {
+        files: ['test/*.js', 'test/**/*.js']
+      }
+
 
     },
     apidox: {
@@ -46,6 +49,8 @@ module.exports = function(grunt) {
       }
     }
   });
+  
+  grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coveralls']);
 
   grunt.registerTask('docs', 'apidox');
 };
