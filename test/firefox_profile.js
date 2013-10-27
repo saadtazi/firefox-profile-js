@@ -3,13 +3,16 @@
 
 'use strict';
 
-var chai = require('chai'),
-    path = require('path'),
-    expect = chai.expect,
-    // sinon  = require('sinon'),
-    FirefoxProfile = require('../lib/firefox_profile'),
-    fs = require('fs'),
-    testProfiles = require('./test_profiles');
+var chai            = require('chai'),
+    path            = require('path'),
+    expect          = chai.expect,
+    FirefoxProfile  = require('../lib/firefox_profile'),
+    fs              = require('fs'),
+    testProfiles    = require('./test_profiles'),
+    sinon           = require('sinon'),
+    sinonChai       = require("sinon-chai");
+
+
 
 chai.use(require('sinon-chai'));
 chai.use(require('chai-fs'));
@@ -54,6 +57,35 @@ describe('firefox_profile', function() {
       fp.setPreference('test.false.boolean', false);
       expect(fp.defaultPreferences).to.have.property('test.true.boolean', 'true');
       expect(fp.defaultPreferences).to.have.property('test.false.boolean', 'false');
+    });
+  });
+
+  describe('#setProxy', function() {
+    it('should throw an expection if no proxyType is specified', function() {
+      var fp = new FirefoxProfile();
+      
+      expect(function() {
+        fp.setProxy({httpProxy: 'http-proxy-server:8080'});
+      }).to.throw(Error);
+    });
+    it('should allow to set manual proxy', function() {
+      var fp = new FirefoxProfile();
+      fp.setProxy({
+        proxyType: 'manual',
+        httpProxy: 'http-proxy-server:8080',
+        ftpProxy: 'ftp-proxy-server:2121',
+        sslProxy: 'ssl-proxy-server:4443',
+        socksProxy: 'socks-proxy-server:9999',
+      });
+      expect(fp.defaultPreferences).to.have.property('network.proxy.http', '"http-proxy-server"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.http_port', '"8080"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.ftp', '"ftp-proxy-server"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.ftp_port', '"2121"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.ssl', '"ssl-proxy-server"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.ssl_port', '"4443"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.socks', '"socks-proxy-server"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');
+      
     });
   });
 

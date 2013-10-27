@@ -13,8 +13,8 @@ var chai = require('chai'),
 chai.use(chaiAsPromised);
 chai.should();
 
-var username = process.env.SAUCE_USERNAME || "SAUCE_USERNAME";
-var accessKey = process.env.SAUCE_ACCESS_KEY || "SAUCE_ACCESS_KEY";
+var username = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME';
+var accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
 
 // console.log(username, accessKey);
 // having browser init in before() generates this error... Why?
@@ -27,7 +27,6 @@ var accessKey = process.env.SAUCE_ACCESS_KEY || "SAUCE_ACCESS_KEY";
 
 
 describe('install extension', function() {
-  'use strict';
   this.timeout(0);
 
   it('should be able to install an extension in firefox and run firebug-specific javascript', function(done) {
@@ -56,7 +55,7 @@ describe('install extension', function() {
         .init({
           browserName:'firefox',
           firefox_profile: zippedProfile,
-          name: 'extension-test'
+          name: 'firefox-profile-js'
         })
         .get('http://saadtazi.com')
         .sleep(1000)

@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/saadtazi/firefox-profile-js.png)](https://travis-ci.org/saadtazi/firefox-profile-js)
 
+[![Coverage Status](https://coveralls.io/repos/saadtazi/firefox-profile-js/badge.png)](https://coveralls.io/r/saadtazi/firefox-profile-js)
+
 Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs),
 [admc/wd](https://github.com/admc/wd) or any other library that allows you to set capabilities.
 
@@ -122,7 +124,7 @@ Requires [apidox](https://github.com/codeactual/apidox) - listed in devDependenc
 
 ## Coverage
     
-    grunt mochaTest:coverage
+    grunt mochacov
 
 Generates doc/coverage.html
 
