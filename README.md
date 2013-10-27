@@ -4,6 +4,8 @@
 
 [![Coverage Status](https://coveralls.io/repos/saadtazi/firefox-profile-js/badge.png)](https://coveralls.io/r/saadtazi/firefox-profile-js)
 
+[![Dependency Status](https://david-dm.org/saadtazi/firefox-profile-js.png)](https://david-dm.org/saadtazi/firefox-profile-js)
+
 Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs),
 [admc/wd](https://github.com/admc/wd) or any other library that allows you to set capabilities.
 
@@ -58,26 +60,24 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         var capabilities = webdriver.Capabilities.firefox();
         
         // attach your newly created profile
-        myProfile.encoded(function(prof) {
-            myProfile.encoded(function(encodedProfile) {
-                capabilities.set('firefox_profile', encodedProfile);
+        
+        myProfile.encoded(function(encodedProfile) {
+            capabilities.set('firefox_profile', encodedProfile);
 
-                // you can set firefox preferences
-                myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
+            // you can set firefox preferences
+            myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
 
-                // it is required to create or update user.js
-                // only needed if you set some preferences
-                myProfile.updatePreferences();
-                
-                // start the browser
-                var wd = new webdriver.Builder().
-                          withCapabilities(capabilities).
-                          build();
-                
-                // woot!
-                wd.get('http://en.wikipedia.org');
-            });
+            // it is required to create or update user.js
+            // only needed if you set some preferences
+            myProfile.updatePreferences();
             
+            // start the browser
+            var wd = new webdriver.Builder().
+                      withCapabilities(capabilities).
+                      build();
+            
+            // woot!
+            wd.get('http://en.wikipedia.org');
         });
     });
 
@@ -88,10 +88,14 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     
     var FirefoxProfile = require('./lib/firefox_profile'),
         wd = require('wd');
-
+    
+    // set some userPrefs if needed
     var fp = new FirefoxProfile();
+    // activate and open firebug by default for all sites
     fp.setPreference('extensions.firebug.allPagesActivation', 'on');
+    // activate the console panel
     fp.setPreference('extensions.firebug.console.enableSites', true);
+    // show the console panel
     fp.setPreference('extensions.firebug.defaultPanelName', 'console');
     fp.updatePreferences();
     // you can install multiple extensions at the same time
@@ -100,7 +104,7 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
             browser = wd.promiseChainRemote();
             browser.init({
               browserName:'firefox',
-              // set firefox capabilities
+              // set firefox_profile capabilities HERE!!!!
               firefox_profile: zippedProfile
             }).
             // woOot!!
