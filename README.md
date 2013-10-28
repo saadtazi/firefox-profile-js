@@ -81,10 +81,10 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         });
     });
 
-    ///////////////////////////////////////////////////
-    // with admc/wd
-    // installs firebug, and make it active by default
-    ///////////////////////////////////////////////////
+    /**************************************************
+    /* with admc/wd
+    /* installs firebug, and make it active by default
+    /**************************************************
 
     var FirefoxProfile = require('./lib/firefox_profile'),
         wd = require('wd');
