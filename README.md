@@ -1,10 +1,10 @@
 # firefox-profile-js
 
 [![Build Status](https://travis-ci.org/saadtazi/firefox-profile-js.png)](https://travis-ci.org/saadtazi/firefox-profile-js)
-
 [![Coverage Status](https://coveralls.io/repos/saadtazi/firefox-profile-js/badge.png)](https://coveralls.io/r/saadtazi/firefox-profile-js)
-
 [![Dependency Status](https://david-dm.org/saadtazi/firefox-profile-js.png)](https://david-dm.org/saadtazi/firefox-profile-js)
+
+[![NPM](https://nodei.co/npm/firefox-profile.png)](https://nodei.co/npm/firefox-profile/)
 
 Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs),
 [admc/wd](https://github.com/admc/wd) or any other library that allows you to set capabilities.
@@ -41,18 +41,18 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
 
 ### I wanna see it!
 
-    ///////////////////////////////////////////////////////////////////
-    // with selenium webdriverJs
-    // installs firebug 
-    // and make http://saadtazi.com the url that is opened on new tabs
-    ///////////////////////////////////////////////////////////////////
-
+```js
+    /******************************************************************
+     * with selenium webdriverJs
+     * installs firebug 
+     * and make http://saadtazi.com the url that is opened on new tabs
+    /******************************************************************
     var webdriver = require('selenium-webdriver');
 
     // create profile
     var FirefoxProfile = require('firefox-profile');
     var myProfile = new FirefoxProfile();
-    
+
     // you can add an extension by specifying the path to the xpi file 
     // or to the unzipped extension directory
     myProfile.addExtension('test/extensions/firebug-1.12.4-fx.xpi', function() {
@@ -81,14 +81,14 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         });
     });
 
-    ///////////////////////////////////////////////////
-    // with admc/wd
-    // installs firebug, and make it active by default
-    ///////////////////////////////////////////////////
-    
+    /**************************************************
+    /* with admc/wd
+    /* installs firebug, and make it active by default
+    /**************************************************
+
     var FirefoxProfile = require('./lib/firefox_profile'),
         wd = require('wd');
-    
+
     // set some userPrefs if needed
     var fp = new FirefoxProfile();
     // activate and open firebug by default for all sites
@@ -110,8 +110,8 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
             // woOot!!
             get('http://en.wikipedia.org');
         });
-    });
-
+});
+```
 
 ## API Documentation
 
