@@ -42,7 +42,8 @@
     "grunt-apidox": "~0.1.3",
     "wd": "~0.2.0",
     "chai-as-promised": "~4.1.0",
-    "grunt-mocha-cov": "0.0.7"
+    "grunt-mocha-cov": "0.0.7",
+    "request": "~2.27.0"
   },
   "dependencies": {
     "wrench": "~1.5.1",

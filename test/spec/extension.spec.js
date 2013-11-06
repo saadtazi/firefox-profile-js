@@ -5,6 +5,7 @@
 var chai = require('chai'),
     chaiAsPromised = require('chai-as-promised'),
     wd = require('wd'),
+    request = require('request'),
     browser,
 
     FirefoxProfile = require('../../lib/firefox_profile'),
@@ -13,8 +14,9 @@ var chai = require('chai'),
 chai.use(chaiAsPromised);
 chai.should();
 
-var username = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME';
-var accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
+var username  = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME',
+    accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY',
+    jobId     =  process.env.TRAVIS_JOB_ID || 'JOB_ID';
 
 // console.log(username, accessKey);
 // having browser init in before() generates this error... Why?
@@ -28,10 +30,18 @@ var accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
 // also the browser quits when running locally, not in saucelabs
 // so adding this... didn't help...
 after(function(done) {
-  console.log('calling browser.quit()');
   browser && browser.quit().then(done);
-  console.log('browser.quit() called');
 });
+
+function sendStatusToSauceLabs(passed, cb) {
+  request.post({
+      url: 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId,
+      json: {passed: passed}
+    }, function(err, response, body) {
+      console.log('request:: ', err, response, body);
+      cb();
+    });
+}
 
 describe('install extension', function() {
   this.timeout(0);
@@ -62,7 +72,8 @@ describe('install extension', function() {
         .init({
           browserName:'firefox',
           firefox_profile: zippedProfile,
-          name: 'firefox-profile-js'
+          name: 'firefox-profile-js',
+          build: process.env.TRAVIS_JOB_ID
         })
         .get('http://saadtazi.com')
         .sleep(1000)
@@ -72,10 +83,10 @@ describe('install extension', function() {
           // because table method is probably added to the regular console 
         .eval('console.table').then(function(res) {
           res.should.contain('function');
-          done();
+          sendStatusToSauceLabs(true, function() { done(); });
         })
         .fail(function(err) {
-          done(err);
+          sendStatusToSauceLabs(true, function() { done(err); });
         })
         .done();
       });
