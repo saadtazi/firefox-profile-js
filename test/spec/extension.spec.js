@@ -34,6 +34,8 @@ after(function(done) {
 });
 
 function sendStatusToSauceLabs(passed, cb) {
+  this.timeout(0);
+
   request.put({
       url: 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId,
       json: {passed: passed}
