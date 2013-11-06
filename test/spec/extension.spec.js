@@ -35,9 +35,10 @@ after(function(done) {
 });
 
 function sendStatusToSauceLabs(passed, cb) {
-
+  var url = 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId;
+  console.log('url::', url);
   request.put({
-      url: 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId,
+      url: url,
       json: {passed: passed}
     }, function(err, response, body) {
       console.log('request:: ', body);
