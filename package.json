@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {

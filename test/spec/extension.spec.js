@@ -27,8 +27,10 @@ var accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
 
 // also the browser quits when running locally, not in saucelabs
 // so adding this... didn't help...
-after(function() {
-  browser && browser.quit();
+after(function(done) {
+  console.log('calling browser.quit()');
+  browser && browser.quit().then(done);
+  console.log('browser.quit() called');
 });
 
 describe('install extension', function() {
@@ -68,15 +70,14 @@ describe('install extension', function() {
           // dirxml, $$ ... and console.table are defined by firebug
           // but only console.table is available from js (not in console)
           // because table method is probably added to the regular console 
-        .eval('console.table')
-        .should.eventually.include('function').then(function() {
-          browser.quit();
+        .eval('console.table').then(function(res) {
+          res.should.contain('function');
           done();
         })
         .fail(function(err) {
-          browser.quit();
           done(err);
-        });
+        })
+        .done();
       });
     });
   });
