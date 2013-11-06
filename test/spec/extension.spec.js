@@ -34,11 +34,11 @@ after(function(done) {
 });
 
 function sendStatusToSauceLabs(passed, cb) {
-  request.post({
+  request.put({
       url: 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId,
       json: {passed: passed}
-    }, function(err, response, body) {
-      console.log('request:: ', err, response, body);
+    }, function(/*err, response, body*/) {
+      //console.log('request:: ', err, response, body);
       cb();
     });
 }
