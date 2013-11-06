@@ -30,16 +30,16 @@ var username  = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME',
 // also the browser quits when running locally, not in saucelabs
 // so adding this... didn't help...
 after(function(done) {
+  this.timeout(0);
   browser && browser.quit().then(done);
 });
 
 function sendStatusToSauceLabs(passed, cb) {
-  this.timeout(0);
 
   request.put({
       url: 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId,
       json: {passed: passed}
-    }, function(/*err, response,*/ body) {
+    }, function(err, response, body) {
       console.log('request:: ', body);
       cb();
     });
