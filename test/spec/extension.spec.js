@@ -34,8 +34,8 @@ after(function(done) {
   browser && browser.quit().then(done);
 });
 
-function sendStatusToSauceLabs(passed, cb) {
-  var url = 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + jobId;
+function sendStatusToSauceLabs(sessionID, passed, cb) {
+  var url = 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + sessionID;
   console.log('url::', url);
   request.put({
       url: url,
@@ -86,10 +86,10 @@ describe('install extension', function() {
           // because table method is probably added to the regular console 
         .eval('console.table').then(function(res) {
           res.should.contain('function');
-          sendStatusToSauceLabs(true, function() { done(); });
+          sendStatusToSauceLabs(browser.sessionID, true, function() { done(); });
         })
         .fail(function(err) {
-          sendStatusToSauceLabs(true, function() { done(err); });
+          sendStatusToSauceLabs(browser.sessionID, true, function() { done(err); });
         })
         .done();
       });
