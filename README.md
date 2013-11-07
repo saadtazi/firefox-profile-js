@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/saadtazi/firefox-profile-js.png)](https://travis-ci.org/saadtazi/firefox-profile-js)
 [![Coverage Status](https://coveralls.io/repos/saadtazi/firefox-profile-js/badge.png)](https://coveralls.io/r/saadtazi/firefox-profile-js)
 [![Dependency Status](https://david-dm.org/saadtazi/firefox-profile-js.png)](https://david-dm.org/saadtazi/firefox-profile-js)
+[![Selenium Test Status](https://saucelabs.com/buildstatus/saadtazi)](https://saucelabs.com/u/saadtazi)
 
 [![NPM](https://nodei.co/npm/firefox-profile.png)](https://nodei.co/npm/firefox-profile/)
 
