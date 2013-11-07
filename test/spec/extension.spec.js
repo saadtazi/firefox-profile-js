@@ -39,9 +39,9 @@ function sendStatusToSauceLabs(sessionID, passed, cb) {
   console.log('url::', url);
   request.put({
       url: url,
-      json: {passed: passed}
+      json: {passed: passed, public: 'public'}
     }, function(err, response, body) {
-      console.log('request:: ', body);
+      //console.log('request:: ', body);
       cb();
     });
 }
