@@ -1,11 +1,11 @@
-/
-'use strict';
+Constructor
 
 _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 
 <a name="tableofcontents"></a>
 
-- <a name="toc_firefoxprofileprototypedeletedir"></a><a name="toc_firefoxprofileprototype"></a><a name="toc_firefoxprofile"></a>[FirefoxProfile.prototype.deleteDir](#firefoxprofileprototypedeletedir)
+- <a name="toc_firefoxprofileprofiledirectory"></a>[FirefoxProfile](#firefoxprofileprofiledirectory)
+- <a name="toc_firefoxprofileprototypedeletedir"></a><a name="toc_firefoxprofileprototype"></a>[FirefoxProfile.prototype.deleteDir](#firefoxprofileprototypedeletedir)
 - <a name="toc_firefoxprofileprototypeshoulddeleteonexittrue"></a>[FirefoxProfile.prototype.shouldDeleteOnExit](#firefoxprofileprototypeshoulddeleteonexittrue)
 - <a name="toc_firefoxprofileprototypewilldeleteonexit"></a>[FirefoxProfile.prototype.willDeleteOnExit](#firefoxprofileprototypewilldeleteonexit)
 - <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
@@ -22,9 +22,17 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypeencodedfunction"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencodedfunction)
 - <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
 
-<a name="firefoxprofileprototype"></a>
+# FirefoxProfile(profileDirectory)
 
-<a name="firefoxprofile"></a>
+> Initialize a new instance of a Firefox Profile
+
+**Parameters:**
+
+- `{String | null} profileDirectory` optional. if provided, it will copy the directory
+
+<sub>Go: [TOC](#tableofcontents)</sub>
+
+<a name="firefoxprofileprototype"></a>
 
 # FirefoxProfile.prototype.deleteDir()
 
