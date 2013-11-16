@@ -5,8 +5,10 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 
 <a name="tableofcontents"></a>
 
-- <a name="toc_firefoxprofileprofiledirectory"></a>[FirefoxProfile](#firefoxprofileprofiledirectory)
-- <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a><a name="toc_firefoxprofileprototype"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
+- <a name="toc_firefoxprofileprototypedeletedir"></a><a name="toc_firefoxprofileprototype"></a><a name="toc_firefoxprofile"></a>[FirefoxProfile.prototype.deleteDir](#firefoxprofileprototypedeletedir)
+- <a name="toc_firefoxprofileprototypeshoulddeleteonexittrue"></a>[FirefoxProfile.prototype.shouldDeleteOnExit](#firefoxprofileprototypeshoulddeleteonexittrue)
+- <a name="toc_firefoxprofileprototypewilldeleteonexit"></a>[FirefoxProfile.prototype.willDeleteOnExit](#firefoxprofileprototypewilldeleteonexit)
+- <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
 - <a name="toc_firefoxprofileprototypeaddextensionpath-callback"></a>[FirefoxProfile.prototype.addExtension](#firefoxprofileprototypeaddextensionpath-callback)
 - <a name="toc_firefoxprofileprototypeaddextensionspath-callback"></a>[FirefoxProfile.prototype.addExtensions](#firefoxprofileprototypeaddextensionspath-callback)
 - <a name="toc_firefoxprofileprototypeupdatepreferences"></a>[FirefoxProfile.prototype.updatePreferences](#firefoxprofileprototypeupdatepreferences)
@@ -20,17 +22,42 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypeencodedfunction"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencodedfunction)
 - <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
 
-# FirefoxProfile(profileDirectory)
+<a name="firefoxprofileprototype"></a>
 
-> Initialize a new instance of a Firefox Profile
+<a name="firefoxprofile"></a>
+
+# FirefoxProfile.prototype.deleteDir()
+
+> Deletes the profile directory.
+
+Call it only if you do not need the profile. Otherwise use at your own risk.
+this function is automatically called by default (= if willDeleteOnExit() returns true)
+
+<sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
+
+# FirefoxProfile.prototype.shouldDeleteOnExit(true)
+
+> Specify if the profile Directory should be deleted on process.exit()
+
+Note: by default:
+* if the constructor is called without param: the new profile directory is deleted
+* if the constructor is called with param (path to profile dir): the dir is copied at init and the copy is deleted on exit
 
 **Parameters:**
 
-- `{String | null} profileDirectory` optional. if provided, it will copy the directory
+- `{boolean} true`
 
-<sub>Go: [TOC](#tableofcontents)</sub>
+<sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-<a name="firefoxprofileprototype"></a>
+# FirefoxProfile.prototype.willDeleteOnExit()
+
+> returns true if the profile directory will be deleted on process.exit()
+
+**Return:**
+
+`{boolean}` true if (default)
+
+<sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
 # FirefoxProfile.prototype.setPreference(key, value)
 

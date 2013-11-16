@@ -27,8 +27,6 @@ var username  = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME',
 //       at Request.self.callback (/Users/saadtazi/Projects/firefox-profile-js/node_modules/wd/node_modules/request/index.js:148:22)
 // before(function(done) {done();})
 
-// also the browser quits when running locally, not in saucelabs
-// so adding this... didn't help...
 after(function(done) {
   this.timeout(0);
   browser && browser.quit().then(done);
