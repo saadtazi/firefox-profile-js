@@ -1,5 +1,5 @@
 /*jshint camelcase:false*/
-/*global describe:false, it:false, beforeEach:false, xit:false*/
+/*global describe:false, it:false, beforeEach:false, afterEach:false*/
 
 'use strict';
 
@@ -19,9 +19,21 @@ var chai            = require('chai'),
 chai.use(require('chai-fs'));
 
 describe('firefox_profile', function() {
+  var fp;
+  beforeEach(function() {
+    fp = new FirefoxProfile();
+  });
+
+  afterEach(function() {
+    // will remove the onexit() call (that deletes the dir folder)
+    // prevents warning: 
+    //   possible EventEmitter memory leak detected. 
+    //   X listeners added. Use emitter.setMaxListeners() to increase limit.
+    fp.deleteDir();
+  });
+
   describe('#constructor', function() {
     it('without parameter, a temp folder will be created', function() {
-      var fp = new FirefoxProfile();
       expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
     });
 
@@ -39,13 +51,11 @@ describe('firefox_profile', function() {
   describe('#setPreference', function() {
     describe('should correctly store string values', function() {
       it('without newline characters', function () {
-        var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string value');
         expect(fp.defaultPreferences).to.have.property('test.string.value', '"test string value"');
       });
 
       it('with newline characters', function () {
-        var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string\n value');
         expect(fp.defaultPreferences).to.have.property('test.string.value', '"test string\\n value"');
       });
@@ -53,7 +63,6 @@ describe('firefox_profile', function() {
     });
 
     it('should correctly store boolean values', function () {
-      var fp = new FirefoxProfile();
       fp.setPreference('test.true.boolean', true);
       fp.setPreference('test.false.boolean', false);
       expect(fp.defaultPreferences).to.have.property('test.true.boolean', 'true');
@@ -63,14 +72,11 @@ describe('firefox_profile', function() {
 
   describe('#setProxy', function() {
     it('should throw an expection if no proxyType is specified', function() {
-      var fp = new FirefoxProfile();
-      
       expect(function() {
         fp.setProxy({httpProxy: 'http-proxy-server:8080'});
       }).to.throw(Error);
     });
     it('should allow to set manual proxy', function() {
-      var fp = new FirefoxProfile();
       fp.setProxy({
         proxyType : 'manual',
         noProxy   : 'http://google.com, http://mail.google.com',
@@ -88,12 +94,10 @@ describe('firefox_profile', function() {
       expect(fp.defaultPreferences).to.have.property('network.proxy.ssl', '"ssl-proxy-server"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.ssl_port', '"4443"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.socks', '"socks-proxy-server"');
-      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');
-      
+      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');      
     });
 
     it('should allow to set auto-config proxy', function() {
-      var fp = new FirefoxProfile();
       fp.setProxy({
         proxyType    : 'pac',
         autoconfigUrl: 'http://url-to-proxy-auto-config'
@@ -111,14 +115,13 @@ describe('firefox_profile', function() {
     var encoding = process.version.indexOf('v0.8.') === 0 ? 'utf8': {encoding: 'utf8'};
     describe('should correctly output a string value in user.js', function() {
       it('without new line characters', function() {
-        var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string value');
         fp.updatePreferences();
         var userPrefsContent = fs.readFileSync(fp.userPrefs, encoding);
         expect(userPrefsContent).to.contain('user_pref("test.string.value", "test string value");\n');
       });
+
       it('with new line characters', function() {
-        var fp = new FirefoxProfile();
         fp.setPreference('test.string.value', 'test string\nvalue');
         fp.updatePreferences();
         var userPrefsContent = fs.readFileSync(fp.userPrefs, encoding);
@@ -126,7 +129,6 @@ describe('firefox_profile', function() {
       });
     });
     it('should correctly output a boolean value in user.js', function() {
-      var fp = new FirefoxProfile();
       fp.setPreference('test.true.boolean', true);
       fp.setPreference('test.false.boolean', false);
       fp.updatePreferences();
@@ -137,7 +139,6 @@ describe('firefox_profile', function() {
   });
   describe('#encoded', function() {
     it('should work with a brand new profile', function(done) {
-      var fp = new FirefoxProfile();
       fp.encoded(function(zippedProfile) {
         expect(zippedProfile).to.be.equal(testProfiles.brandNewProfile.expectedZip);
         done();
@@ -147,14 +148,10 @@ describe('firefox_profile', function() {
     });
 
   });
-  // 'id': null,
-  // 'name': null,
-  // 'unpack': true,
-  // 'version': null
+
   describe('#__addonDetails', function() {
     it('should correctly retrieve addon details from rdf that does not use namespace', function(done) {
       
-      var fp = new FirefoxProfile();
       fp._addonDetails(path.join(__dirname, 'extensions/test.no-namespace-template.xpi'), function(extDetails) {
         expect(extDetails).to.be.eql({
           id: 'no-namespace@test.test',
@@ -167,7 +164,6 @@ describe('firefox_profile', function() {
     });
 
     it('should correctly retrieve addon details from rdf that uses namespace', function(done) {
-      var fp = new FirefoxProfile();
       fp._addonDetails(path.join(__dirname, 'extensions/test.template.xpi'), function(extDetails) {
         expect(extDetails).to.be.eql({
           id: 'with-namespace@test.test',
@@ -182,7 +178,6 @@ describe('firefox_profile', function() {
 
   describe('#_sanitizePref()', function() {
     it('you correctly deal you boolean values', function() {
-      var fp = new FirefoxProfile();
       expect(fp._sanitizePref('true')).to.be.true;
       expect(fp._sanitizePref('false')).to.be.false;
     });
@@ -190,7 +185,6 @@ describe('firefox_profile', function() {
 
   describe('#addExtension', function() {
     it('should unzip extensions in profile folder' , function(done) {
-      var fp = new FirefoxProfile();
       fp.addExtension(path.join(__dirname, 'extensions/png-extension.xpi'), function() {
         var exensionDir = path.join(fp.profileDir, 'extensions', 'id@test.test');
         expect(fs.statSync(exensionDir).isDirectory()).to.be.true;
@@ -204,20 +198,17 @@ describe('firefox_profile', function() {
 
   describe('#path', function() {
     it('should return the profile directory', function() {
-      var fp = new FirefoxProfile();
       expect(fp.path()).to.be.equal(fp.profileDir);
     });
   });
   describe('#canAcceptUntrustedCerts', function() {
     it('should return default value if not set', function() {
-      var fp = new FirefoxProfile();
       expect(fp.canAcceptUntrustedCerts()).to.be.true;
     });
   });
 
   describe('#setAcceptUntrustedCerts', function() {
     it('should properly set value', function() {
-      var fp = new FirefoxProfile();
       fp.setAcceptUntrustedCerts(false);
       expect(fp.canAcceptUntrustedCerts()).to.be.false;
 
@@ -226,35 +217,45 @@ describe('firefox_profile', function() {
 
   describe('#canAssumeUntrustedCertIssuer', function() {
     it('should return default value if not set', function() {
-      var fp = new FirefoxProfile();
       expect(fp.canAssumeUntrustedCertIssuer()).to.be.true;
     });
   });
 
   describe('#setAssumeUntrustedCertIssuer', function() {
     it('should properly set value', function() {
-      var fp = new FirefoxProfile();
-      fp.setAssumeUntrustedCertIssuer(0); // faulty
+      fp.setAssumeUntrustedCertIssuer(0); // falsy
       expect(fp.canAssumeUntrustedCertIssuer()).to.be.false;
 
     });
   });
   describe('#nativeEventsEnabled', function() {
     it('should return default value if not set', function() {
-      var fp = new FirefoxProfile();
       expect(fp.nativeEventsEnabled()).to.be.true;
     });
   });
 
   describe('#setNativeEventsEnabled', function() {
     it('should properly set value', function() {
-      var fp = new FirefoxProfile();
-      fp.setNativeEventsEnabled(false); // faulty
+      fp.setNativeEventsEnabled(false);
       expect(fp.nativeEventsEnabled()).to.be.false;
 
     });
   });
-  describe('#path', function() {
+  describe('#shouldDeleteOnExit', function() {
+    it('should properly set internal property', function() {
+      expect(fp.willDeleteOnExit()).to.be.true;
+      fp.shouldDeleteOnExit(false);
+      expect(fp.willDeleteOnExit()).to.be.false;
+    });
+  });
 
+  describe('#deleteDir', function() {
+    it('should delete profile dir', function() {
+      expect(fs.existsSync(fp.path())).to.be.true;
+      expect(fs.statSync(fp.path()).isDirectory()).to.be.true;
+
+      fp.deleteDir();
+      expect(fs.existsSync(fp.path())).to.be.false;
+    });
   });
 });
