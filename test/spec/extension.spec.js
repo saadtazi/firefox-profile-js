@@ -93,4 +93,54 @@ describe('install extension', function() {
       });
     });
   });
+
+  it('should be able to install firebug, using Sync encoded method', function() {
+    var fp = new FirefoxProfile(),
+      testProfile = testProfiles.profileWithFirebug;
+    fp.setPreference('extensions.firebug.allPagesActivation', 'on');
+    fp.setPreference('extensions.firebug.console.enableSites', true);
+    fp.setPreference('extensions.firebug.defaultPanelName', 'console');
+    fp.updatePreferences();
+    fp.addExtensions(testProfile.extensions, function() {
+      var zippedProfile = fp.encodedSync();
+      browser = wd.promiseChainRemote(
+        'ondemand.saucelabs.com',
+        80,
+        username,
+        accessKey
+      );
+
+      // browser.on('status', function(info) {
+      //   console.log(info);
+      // });
+      // browser.on('command', function(meth, path, data) {
+      //   console.log(' > ' + meth, path, data || '');
+      // });
+      browser
+        .init({
+          browserName: 'firefox',
+          firefox_profile: zippedProfile,
+          name: 'firefox-profile-js',
+          build: process.env.TRAVIS_JOB_ID
+        })
+        .get('http://saadtazi.com')
+        .sleep(1000)
+      // see http://getfirebug.com/wiki/index.php/Command_Line_API
+      // dirxml, $$ ... and console.table are defined by firebug
+      // but only console.table is available from js (not in console)
+      // because table method is probably added to the regular console 
+      .eval('console.table').then(function(res) {
+        res.should.contain('function');
+        sendStatusToSauceLabs(browser.sessionID, true, function() {
+          done();
+        });
+      })
+        .fail(function(err) {
+          sendStatusToSauceLabs(browser.sessionID, true, function() {
+            done(err);
+          });
+        })
+        .done();
+    });
+  });
 });
