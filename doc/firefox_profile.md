@@ -1,6 +1,6 @@
 Constructor
 
-_Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
+_Source: [lib/firefox_profile.js](..\lib/firefox_profile.js)_
 
 <a name="tableofcontents"></a>
 
@@ -20,6 +20,7 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypenativeeventsenabled"></a>[FirefoxProfile.prototype.nativeEventsEnabled](#firefoxprofileprototypenativeeventsenabled)
 - <a name="toc_firefoxprofileprototypesetnativeeventsenabledboolean"></a>[FirefoxProfile.prototype.setNativeEventsEnabled](#firefoxprofileprototypesetnativeeventsenabledboolean)
 - <a name="toc_firefoxprofileprototypeencodedfunction"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencodedfunction)
+- <a name="toc_firefoxprofileprototypeencodedsync"></a>[FirefoxProfile.prototype.encodedSync](#firefoxprofileprototypeencodedsync)
 - <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
 
 # FirefoxProfile(profileDirectory)
@@ -177,6 +178,15 @@ for use with remote WebDriver JSON wire protocol
 **Parameters:**
 
 - `{Function} function` a callback function with first params as a zipped, base64 encoded string of the profile directory
+
+<sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
+
+# FirefoxProfile.prototype.encodedSync()
+
+> return zipped, base64 encoded string of the profile directory
+for use with remote WebDriver JSON wire protocol
+
+Sync version of the encoded method
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
