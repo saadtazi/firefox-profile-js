@@ -87,7 +87,7 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     /* installs firebug, and make it active by default
     /**************************************************
 
-    var FirefoxProfile = require('./lib/firefox_profile'),
+    var FirefoxProfile = require('firefox-profile'),
         wd = require('wd');
 
     // set some userPrefs if needed
@@ -100,7 +100,7 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     fp.setPreference('extensions.firebug.defaultPanelName', 'console');
     fp.updatePreferences();
     // you can install multiple extensions at the same time
-    fp.addExtensions(['test/extensions/firebug-1.12.4-fx.xpi'], function() {
+    fp.addExtensions(['./test/extensions/firebug-1.12.4-fx.xpi'], function() {
         fp.encoded(function(zippedProfile) {
             browser = wd.promiseChainRemote();
             browser.init({
