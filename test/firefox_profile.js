@@ -223,7 +223,7 @@ describe('firefox_profile', function() {
 
   describe('#setAssumeUntrustedCertIssuer', function() {
     it('should properly set value', function() {
-      fp.setAssumeUntrustedCertIssuer(0); // falsy
+      fp.setAssumeUntrustedCertIssuer(false);
       expect(fp.canAssumeUntrustedCertIssuer()).to.be.false;
 
     });

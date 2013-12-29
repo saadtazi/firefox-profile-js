@@ -1,3 +1,14 @@
+# 0.2.1
+
+* setAcceptUntrustedCerts and setAssumeUntrustedCertIssuer now expects real boolean (contribution from [testingBot](https://github.com/testingbot))
+
+# 0.2.0
+
+* Fixed Windows support
+
+# 0.1.1
+
+* fixed potential EMFILE when installing multiple extensions (contribution from https://github.com/circusbred)
 # 0.1.0
 
 * more unit tests, added integration tests, saucelabs
