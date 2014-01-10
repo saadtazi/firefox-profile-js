@@ -1,3 +1,8 @@
+# 0.2.2
+
+* fixed other Windows path issues (contribution from [testingBot](https://github.com/testingbot))
+
+
 # 0.2.1
 
 * setAcceptUntrustedCerts and setAssumeUntrustedCertIssuer now expects real boolean (contribution from [testingBot](https://github.com/testingbot))
