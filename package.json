@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {
@@ -30,6 +30,13 @@
   "bugs": {
     "url": "https://github.com/saadtazi/firefox-profile-js/issues"
   },
+  "contributors": [
+  { "name" : "testingbot",
+    "url" : "http://www.testingbot.com"
+  },
+  { "name": "David Sturley",
+    "url": "https://github.com/circusbred"
+  }],
   "devDependencies": {
     "mocha": "~1.14.0",
     "chai": "~1.8.0",
