@@ -1,3 +1,7 @@
+# 0.2.3
+
+* updated archiver version (now 0.5)
+
 # 0.2.2
 
 * fixed other Windows path issues (contribution from [testingBot](https://github.com/testingbot))
