@@ -1,3 +1,7 @@
+# 0.2.3
+
+* update package versions (archiver)
+
 # 0.2.2
 
 * fixed other Windows path issues (contribution from [testingBot](https://github.com/testingbot))
