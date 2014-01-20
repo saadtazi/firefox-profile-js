@@ -57,20 +57,21 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     // you can add an extension by specifying the path to the xpi file 
     // or to the unzipped extension directory
     myProfile.addExtension('test/extensions/firebug-1.12.4-fx.xpi', function() {
-    	
+        
         var capabilities = webdriver.Capabilities.firefox();
+
+        // you can set firefox preferences BEFORE calling encoded()
+        myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
+
+        // it is required to create or update user.js
+        // only needed if you set some preferences
+        myProfile.updatePreferences();
         
         // attach your newly created profile
         
         myProfile.encoded(function(encodedProfile) {
             capabilities.set('firefox_profile', encodedProfile);
 
-            // you can set firefox preferences
-            myProfile.setPreference('browser.newtab.url', 'http://saadtazi.com');
-
-            // it is required to create or update user.js
-            // only needed if you set some preferences
-            myProfile.updatePreferences();
             
             // start the browser
             var wd = new webdriver.Builder().
@@ -91,6 +92,8 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         wd = require('wd');
 
     // set some userPrefs if needed
+    // Note: make sure you call updateProferences and encoded()
+    //       after setting some userPrefs
     var fp = new FirefoxProfile();
     // activate and open firebug by default for all sites
     fp.setPreference('extensions.firebug.allPagesActivation', 'on');
