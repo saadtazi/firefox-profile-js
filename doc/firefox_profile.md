@@ -71,7 +71,9 @@ Note: by default:
 
 > Set a user preference.
 
-Any modification to the user preference needs to be persisted using this.updatePreferences()
+Any modification to the user preference can be persisted using this.updatePreferences()
+If this.setPreference() is called before calling this.encoded(), then this.updatePreferences() 
+is automatically called.
 For a comprehensive list of preference keys, see http://kb.mozillazine.org/About:config_entries
 
 **Parameters:**
@@ -112,6 +114,9 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 # FirefoxProfile.prototype.updatePreferences()
 
 > Save user preferences to the user.js profile file.
+
+updatePreferences() is automatically called when encoded() is called 
+(if needed = if setPreference() was called before calling encoded())
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
