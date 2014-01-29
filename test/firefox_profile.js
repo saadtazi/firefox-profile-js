@@ -8,11 +8,11 @@ var chai            = require('chai'),
     expect          = chai.expect,
     FirefoxProfile  = require('../lib/firefox_profile'),
     fs              = require('fs'),
-    testProfiles    = require('./test_profiles')
-    // sinon           = require('sinon'),
-    // sinonChai       = require("sinon-chai")
-    ;
+    testProfiles    = require('./test_profiles'),
+    sinon           = require('sinon'),
+    sinonChai       = require('sinon-chai');
 
+chai.use(sinonChai);
 
 
 // chai.use(require('sinon-chai'));
@@ -94,7 +94,7 @@ describe('firefox_profile', function() {
       expect(fp.defaultPreferences).to.have.property('network.proxy.ssl', '"ssl-proxy-server"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.ssl_port', '"4443"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.socks', '"socks-proxy-server"');
-      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');      
+      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');
     });
 
     it('should allow to set auto-config proxy', function() {
@@ -138,15 +138,30 @@ describe('firefox_profile', function() {
     });
   });
   describe('#encoded', function() {
+    var spy;
+    beforeEach(function() {
+      spy = sinon.spy(fp, 'updatePreferences');
+    });
+    afterEach(function() {
+      spy.restore();
+    });
     it('should work with a brand new profile', function(done) {
-      fp.encoded(function(zippedProfile) {
-        expect(zippedProfile).to.be.equal(testProfiles.brandNewProfile.expectedZip);
+      fp.encoded(function(zippedProfileString) {
+        expect(zippedProfileString).to.be.equal(testProfiles.brandNewProfile.expectedZip);
         done();
       });
-      // encoded() results is not constant for more 'complex' profiles
-      // other encoded tests are done in test/spec/ tests
     });
 
+    it('should call updatePreferences if preferences were modified', function(done) {
+      fp.encoded(function() {
+        expect(spy).to.not.have.been.called;
+        fp.setPreference('test.string.value', 'test string\nvalue');
+        fp.encoded(function() {
+          expect(spy).to.have.been.called;
+          done();
+        });
+      });
+    });
   });
 
   describe('#__addonDetails', function() {

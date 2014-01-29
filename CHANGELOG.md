@@ -1,3 +1,8 @@
+# 0.2.4
+
+* updatePreferences() call is no longer required, it is automatically called by encoded() if needed
+
+
 # 0.2.3
 
 * update package versions (archiver)

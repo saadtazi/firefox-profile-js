@@ -53,7 +53,8 @@ describe('install extension', function() {
     fp.setPreference('extensions.firebug.allPagesActivation', 'on');
     fp.setPreference('extensions.firebug.console.enableSites', true);
     fp.setPreference('extensions.firebug.defaultPanelName', 'console');
-    fp.updatePreferences();
+    // calling updatePreferences is now optional
+    // fp.updatePreferences();
     fp.addExtensions(testProfile.extensions, function() {
       fp.encoded(function(zippedProfile) {
         browser = wd.promiseChainRemote(
