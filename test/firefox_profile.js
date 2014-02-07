@@ -26,8 +26,8 @@ describe('firefox_profile', function() {
 
   afterEach(function() {
     // will remove the onexit() call (that deletes the dir folder)
-    // prevents warning: 
-    //   possible EventEmitter memory leak detected. 
+    // prevents warning:
+    //   possible EventEmitter memory leak detected.
     //   X listeners added. Use emitter.setMaxListeners() to increase limit.
     fp.deleteDir();
   });
@@ -104,11 +104,11 @@ describe('firefox_profile', function() {
       });
       expect(fp.defaultPreferences).to.have.property('network.proxy.type', '2');
       expect(fp.defaultPreferences).to.have.property('network.proxy.autoconfig_url', '"http://url-to-proxy-auto-config"');
-      
+
     });
   });
 
-  
+
 
   describe('#updatePreferences', function() {
     // compat node 0.8 & 0.10
@@ -166,7 +166,7 @@ describe('firefox_profile', function() {
 
   describe('#__addonDetails', function() {
     it('should correctly retrieve addon details from rdf that does not use namespace', function(done) {
-      
+
       fp._addonDetails(path.join(__dirname, 'extensions/test.no-namespace-template.xpi'), function(extDetails) {
         expect(extDetails).to.be.eql({
           id: 'no-namespace@test.test',
@@ -189,6 +189,18 @@ describe('firefox_profile', function() {
         done();
       });
     });
+
+    it('should correctly retrieve addon details from addon that does not use install.rdf', function(done) {
+      fp._addonDetails(path.join(__dirname, 'extensions/test.jetpack-template.xpi'), function(extDetails) {
+        expect(extDetails).to.be.eql({
+          id: 'jetpack-addon@test.test',
+          name: 'Jetpack-addon-test',
+          unpack: false,
+          version: '0.0.1'
+        });
+        done();
+      });
+    });
   });
 
   describe('#_sanitizePref()', function() {
@@ -205,6 +217,17 @@ describe('firefox_profile', function() {
         expect(fs.statSync(exensionDir).isDirectory()).to.be.true;
         expect(fs.statSync(path.join(exensionDir, 'install.rdf')).isFile()).to.be.true;
         expect(fs.statSync(path.join(exensionDir, 'breakpointConditionEditor.png')).isFile()).to.be.true;
+        done();
+
+      });
+    });
+
+    it('should unzip extensions in profile folder for jetpack addons' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/jetpack-extension.xpi'), function() {
+        var exensionDir = path.join(fp.profileDir, 'extensions', 'jetpack-addon@test.test');
+        expect(fs.statSync(exensionDir).isDirectory()).to.be.true;
+        expect(fs.statSync(path.join(exensionDir, 'package.json')).isFile()).to.be.true;
+        expect(fs.statSync(path.join(exensionDir, 'index.js')).isFile()).to.be.true;
         done();
 
       });

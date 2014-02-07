@@ -1,0 +1,13 @@
+{
+  "title": "Jetpack Addon Test",
+  "name":"Jetpack-addon-test",
+  "main":"index.js",
+  "version": "0.0.1",
+  "id": "jetpack-addon@test.test",
+  "dependencies": {
+    "test-math": "*",
+    "test-custom-main": "*",
+    "test-custom-main-relative": "*",
+    "test-default-main": "*"
+  }
+}
