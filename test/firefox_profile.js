@@ -209,6 +209,13 @@ describe('firefox_profile', function() {
 
       });
     });
+    it('should not unzip extensions in profile folder when unpack is false' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/packed-extension.xpi'), function() {
+        var exensionDir = path.join(fp.profileDir, 'extensions', 'packed-extension@test.test.xpi');
+        expect(fs.statSync(exensionDir).isFile()).to.be.true;
+        done();
+      });
+    });
   });
 
   describe('#path', function() {
