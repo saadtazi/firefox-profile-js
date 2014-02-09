@@ -59,6 +59,7 @@
     "node-uuid": "~1.4.1",
     "archiver": "~0.5.1",
     "lazystream": "~0.1.0",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "fs-extra": "~0.8.1"
   }
 }

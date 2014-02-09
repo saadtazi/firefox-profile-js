@@ -224,12 +224,17 @@ describe('firefox_profile', function() {
 
     it('should unzip extensions in profile folder for jetpack addons' , function(done) {
       fp.addExtension(path.join(__dirname, 'extensions/jetpack-extension.xpi'), function() {
-        var exensionDir = path.join(fp.profileDir, 'extensions', 'jetpack-addon@test.test');
-        expect(fs.statSync(exensionDir).isDirectory()).to.be.true;
-        expect(fs.statSync(path.join(exensionDir, 'package.json')).isFile()).to.be.true;
-        expect(fs.statSync(path.join(exensionDir, 'index.js')).isFile()).to.be.true;
+        var exensionDir = path.join(fp.profileDir, 'extensions', 'jetpack-addon@test.test.xpi');
+        expect(fs.statSync(exensionDir).isDirectory()).to.be.false;
         done();
+      });
+    });
 
+    it('should not unzip extensions in profile folder when unpack is false' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/packed-extension.xpi'), function() {
+        var exensionDir = path.join(fp.profileDir, 'extensions', 'packed-extension@test.test.xpi');
+        expect(fs.statSync(exensionDir).isFile()).to.be.true;
+        done();
       });
     });
   });
