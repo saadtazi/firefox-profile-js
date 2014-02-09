@@ -1,3 +1,8 @@
+# 0.2.5
+
+* fixed packed extension (thanks @jsantell)
+* allowed support for the new jetpack extensions that use package.json instead of install.rdf (thanks @jsantell)
+
 # 0.2.4
 
 * updatePreferences() call is no longer required, it is automatically called by encoded() if needed

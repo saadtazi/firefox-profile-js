@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {
@@ -36,6 +36,9 @@
   },
   { "name": "David Sturley",
     "url": "https://github.com/circusbred"
+  }],
+  { "name": "Jordan Santell",
+    "url": "http://jsantell.com"
   }],
   "devDependencies": {
     "mocha": "~1.17.0",
