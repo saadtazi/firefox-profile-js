@@ -172,6 +172,7 @@ describe('firefox_profile', function() {
           id: 'no-namespace@test.test',
           name: 'test-extension without namespace',
           unpack: true,
+          isNative: false,
           version: '2.1.0'
         });
         done();
@@ -184,6 +185,7 @@ describe('firefox_profile', function() {
           id: 'with-namespace@test.test',
           name: 'test-extension with namespace',
           unpack: false,
+          isNative: false,
           version: '2.2.99'
         });
         done();
@@ -196,6 +198,7 @@ describe('firefox_profile', function() {
           id: 'jetpack-addon@test.test',
           name: 'Jetpack-addon-test',
           unpack: false,
+          isNative: true,
           version: '0.0.1'
         });
         done();
