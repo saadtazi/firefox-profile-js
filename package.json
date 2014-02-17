@@ -31,15 +31,19 @@
     "url": "https://github.com/saadtazi/firefox-profile-js/issues"
   },
   "contributors": [
-  { "name" : "testingbot",
-    "url" : "http://www.testingbot.com"
-  },
-  { "name": "David Sturley",
-    "url": "https://github.com/circusbred"
-  },
-  { "name": "Jordan Santell",
-    "url": "http://jsantell.com"
-  }],
+    {
+      "name": "testingbot",
+      "url": "http://www.testingbot.com"
+    },
+    {
+      "name": "David Sturley",
+      "url": "https://github.com/circusbred"
+    },
+    {
+      "name": "Jordan Santell",
+      "url": "http://jsantell.com"
+    }
+  ],
   "devDependencies": {
     "blanket": "~1.1.5",
     "chai": "~1.9",
@@ -50,6 +54,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-mocha-cov": "0.2.1",
     "mocha": "~1.17.0",
+    "mocha-lcov-reporter": "0.0.1",
     "request": "~2.33.0",
     "sinon": "~1.8.2",
     "sinon-chai": "~2.5.0",
