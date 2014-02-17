@@ -1,3 +1,7 @@
+# 0.2.6
+
+* deps version update
+
 # 0.2.5
 
 * fixed packed extension (thanks @jsantell)
