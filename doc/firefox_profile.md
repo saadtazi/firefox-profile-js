@@ -10,7 +10,7 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypewilldeleteonexit"></a>[FirefoxProfile.prototype.willDeleteOnExit](#firefoxprofileprototypewilldeleteonexit)
 - <a name="toc_firefoxprofileprototypesetpreferencekey-value"></a>[FirefoxProfile.prototype.setPreference](#firefoxprofileprototypesetpreferencekey-value)
 - <a name="toc_firefoxprofileprototypeaddextensionpath-callback"></a>[FirefoxProfile.prototype.addExtension](#firefoxprofileprototypeaddextensionpath-callback)
-- <a name="toc_firefoxprofileprototypeaddextensionspath-callback"></a>[FirefoxProfile.prototype.addExtensions](#firefoxprofileprototypeaddextensionspath-callback)
+- <a name="toc_firefoxprofileprototypeaddextensionsextensions-callback"></a>[FirefoxProfile.prototype.addExtensions](#firefoxprofileprototypeaddextensionsextensions-callback)
 - <a name="toc_firefoxprofileprototypeupdatepreferences"></a>[FirefoxProfile.prototype.updatePreferences](#firefoxprofileprototypeupdatepreferences)
 - <a name="toc_firefoxprofileprototypepath"></a>[FirefoxProfile.prototype.path](#firefoxprofileprototypepath)
 - <a name="toc_firefoxprofileprototypecanacceptuntrustedcerts"></a>[FirefoxProfile.prototype.canAcceptUntrustedCerts](#firefoxprofileprototypecanacceptuntrustedcerts)
@@ -100,13 +100,13 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-# FirefoxProfile.prototype.addExtensions(path, callback)
+# FirefoxProfile.prototype.addExtensions(extensions, callback)
 
-> Add mutliple extension to the profile.
+> Add mutliple extensions to the profile.
 
 **Parameters:**
 
-- `{string} path` - path to a xpi extension file or a unziped extension folder
+- `{Array} extensions` - arrays of paths to xpi extension files or unziped extension folders
 - `{function} callback` - the callback function to call when the extension is added
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
