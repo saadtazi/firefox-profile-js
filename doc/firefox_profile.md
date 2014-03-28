@@ -20,7 +20,7 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypenativeeventsenabled"></a>[FirefoxProfile.prototype.nativeEventsEnabled](#firefoxprofileprototypenativeeventsenabled)
 - <a name="toc_firefoxprofileprototypesetnativeeventsenabledboolean"></a>[FirefoxProfile.prototype.setNativeEventsEnabled](#firefoxprofileprototypesetnativeeventsenabledboolean)
 - <a name="toc_firefoxprofileprototypeencodedfunction"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencodedfunction)
-- <a name="toc_firefoxprofileprototypesetproxyobject"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyobject)
+- <a name="toc_firefoxprofileprototypesetproxyproxy"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyproxy)
 
 # FirefoxProfile(profileDirectory)
 
@@ -185,16 +185,52 @@ for use with remote WebDriver JSON wire protocol
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
-# FirefoxProfile.prototype.setProxy(object)
+# FirefoxProfile.prototype.setProxy(proxy)
 
-> set network proxy settings.
-if proxy type is 'manual', then possible settings are: 'ftp', 'http', 'ssl', 'socks'
-if proxy type is 'pac', the setting should be 'autoconfig_url'
-for other values, only the proxy.type pref will be set
+> Set network proxy settings.
+
+The parameter `proxy` is a hash which structure depends on the value of mandatory `proxyType` key,
+**which takes one of the following string values:**
+
+* `direct` - direct connection (no proxy)
+* `system` - use operating system proxy settings
+* `pac` - use automatic proxy configuration set based on the value of `autoconfigUrl` key
+* `manual` - manual proxy settings defined separately for different protocols using values from following keys:
+`ftpProxy`, `httpProxy`, `sslProxy`, `socksProxy`
+
+**Examples:**
+
+* set automatic proxy:
+
+```js
+ profile.setProxy({
+     proxyType: 'pac',
+     autoconfigUrl: 'http://myserver/proxy.pac'
+ });
+```
+
+* set manual http proxy:
+
+```js
+ profile.setProxy({
+     proxyType: 'manual',
+     httpProxy: '127.0.0.1:8080'
+ });
+```
+
+* set manual http and https proxy:
+
+```js
+ profile.setProxy({
+     proxyType: 'manual',
+     httpProxy: '127.0.0.1:8080',
+     sslProxy: '127.0.0.1:8080'
+ });
+```
 
 **Parameters:**
 
-- `{Object} object` a proxy object. Mandatary attribute: proxyType
+- `{Object} proxy` a proxy hash, mandatory key `proxyType`
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
