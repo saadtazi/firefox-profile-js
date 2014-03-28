@@ -88,13 +88,13 @@ describe('firefox_profile', function() {
       expect(fp.defaultPreferences).to.have.property('network.proxy.type', '1');
       expect(fp.defaultPreferences).to.have.property('network.proxy.no_proxies_on', '"http://google.com, http://mail.google.com"');
       expect(fp.defaultPreferences).to.have.property('network.proxy.http', '"http-proxy-server"');
-      expect(fp.defaultPreferences).to.have.property('network.proxy.http_port', '"8080"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.http_port', '8080');
       expect(fp.defaultPreferences).to.have.property('network.proxy.ftp', '"ftp-proxy-server"');
-      expect(fp.defaultPreferences).to.have.property('network.proxy.ftp_port', '"2121"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.ftp_port', '2121');
       expect(fp.defaultPreferences).to.have.property('network.proxy.ssl', '"ssl-proxy-server"');
-      expect(fp.defaultPreferences).to.have.property('network.proxy.ssl_port', '"4443"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.ssl_port', '4443');
       expect(fp.defaultPreferences).to.have.property('network.proxy.socks', '"socks-proxy-server"');
-      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '"9999"');
+      expect(fp.defaultPreferences).to.have.property('network.proxy.socks_port', '9999');
     });
 
     it('should allow to set auto-config proxy', function() {
