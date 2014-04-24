@@ -67,7 +67,7 @@
   "dependencies": {
     "adm-zip": "~0.4.3",
     "archiver": "~0.9.0",
-    "async": "~0.7.0",
+    "async": "~0.2.9",
     "fs-extra": "~0.8.1",
     "lazystream": "~0.1.0",
     "node-uuid": "~1.4.1",

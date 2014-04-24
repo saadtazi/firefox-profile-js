@@ -1,3 +1,11 @@
+# 0.2.8
+
+* updated package versions
+
+# 0.2.7
+
+* updated package versions + fixed coverage report
+
 # 0.2.6
 
 * deps version update
