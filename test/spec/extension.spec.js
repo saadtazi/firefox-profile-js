@@ -85,10 +85,14 @@ describe('install extension', function() {
           // because table method is probably added to the regular console 
         .eval('console.table').then(function(res) {
           res.should.contain('function');
-          sendStatusToSauceLabs(browser.sessionID, true, function() { done(); });
+          if (browser.sessionID) {
+            sendStatusToSauceLabs(browser.sessionID, true, function() { done(); });
+          }
         })
         .fail(function(err) {
-          sendStatusToSauceLabs(browser.sessionID, true, function() { done(err); });
+          if (browser.sessionID) {
+            sendStatusToSauceLabs(browser.sessionID, true, function() { done(err); });
+          }
         })
         .done();
       });
