@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {
@@ -66,8 +66,8 @@
   },
   "dependencies": {
     "adm-zip": "~0.4.3",
-    "archiver": "~0.7.1",
-    "async": "~0.2.9",
+    "archiver": "~0.9.0",
+    "async": "~0.7.0",
     "fs-extra": "~0.8.1",
     "lazystream": "~0.1.0",
     "node-uuid": "~1.4.1",
