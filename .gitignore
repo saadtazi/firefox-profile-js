@@ -5,6 +5,6 @@ Icon
 secret.config.sh
 # Thumbnails
 ._*
-firefox-profile.sublime-*
+
 node_modules
 coverage/coverage.html
