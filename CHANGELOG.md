@@ -1,6 +1,7 @@
 # 0.2.8
 
-* updated package versions
+* updated package versions.
+* dropping support for nodejs 0.8.
 
 # 0.2.7
 
