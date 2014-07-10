@@ -52,9 +52,14 @@ describe('install extension', function() {
       testProfile = testProfiles.profileWithFirebug;
     fp.setPreference('extensions.firebug.allPagesActivation', 'on');
     fp.setPreference('extensions.firebug.console.enableSites', true);
+    fp.setPreference('extensions.firebug.cookies.enableSites', true);
+    fp.setPreference('extensions.firebug.net.enableSites', true);
+    fp.setPreference('extensions.firebug.script.enableSites', true);
+    fp.setPreference('extensions.firebug.currentVersion', '2.0.1');
     fp.setPreference('extensions.firebug.defaultPanelName', 'console');
     // calling updatePreferences is now optional
-    // fp.updatePreferences();
+    // no longer works with ff 30+: have to be called explicitly
+    fp.updatePreferences();
     fp.addExtensions(testProfile.extensions, function() {
       fp.encoded(function(zippedProfile) {
         browser = wd.promiseChainRemote(
@@ -72,7 +77,7 @@ describe('install extension', function() {
         // });
         browser
         .init({
-          browserName:'firefox',
+          browserName:'firefox', // latest
           firefox_profile: zippedProfile,
           name: 'firefox-profile-js',
           build: process.env.TRAVIS_JOB_ID
