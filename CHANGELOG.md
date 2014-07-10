@@ -1,3 +1,7 @@
+# 0.2.9
+
+* support for jetpack extensions (jpm now in beta) (thanks @jsantell)
+
 # 0.2.8
 
 * updated package versions.
