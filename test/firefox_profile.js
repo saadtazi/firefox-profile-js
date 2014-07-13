@@ -24,12 +24,12 @@ describe('firefox_profile', function() {
     fp = new FirefoxProfile();
   });
 
-  afterEach(function() {
+  afterEach(function(done) {
     // will remove the onexit() call (that deletes the dir folder)
     // prevents warning:
     //   possible EventEmitter memory leak detected.
     //   X listeners added. Use emitter.setMaxListeners() to increase limit.
-    fp.deleteDir();
+    fp.deleteDir(done);
   });
 
   describe('#constructor', function() {
@@ -48,6 +48,21 @@ describe('firefox_profile', function() {
     });
 
   });
+  describe('#Firefox.copy', function() {
+
+    it('lock files should not be copied over', function(done) {
+      FirefoxProfile.copy(testProfiles.emptyProfile.path, function(fp) {
+        expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
+        ['.parentlock', 'lock', 'parent.lock'].forEach(function(lockFile) {
+          expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
+        });
+        expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
+        fp.deleteDir(done);
+      });
+    });
+
+  });
+
   describe('#setPreference', function() {
     describe('should correctly store string values', function() {
       it('without newline characters', function () {
@@ -296,12 +311,14 @@ describe('firefox_profile', function() {
   });
 
   describe('#deleteDir', function() {
-    it('should delete profile dir', function() {
+    it('should delete profile dir', function(done) {
       expect(fs.existsSync(fp.path())).to.be.true;
       expect(fs.statSync(fp.path()).isDirectory()).to.be.true;
 
-      fp.deleteDir();
-      expect(fs.existsSync(fp.path())).to.be.false;
+      fp.deleteDir(function() {
+        expect(fs.existsSync(fp.path())).to.be.false;
+        done();
+      });
     });
   });
 });

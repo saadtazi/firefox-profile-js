@@ -13,7 +13,7 @@ Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wi
 This class allows you to:
 
 * create a firefox profile
-* use an existing profile (by specifying path)
+* use an existing profile (by specifying a path)
 * add extensions to your profile,
 * specify proxy settings, 
 * set the user preferences... 
