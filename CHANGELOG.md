@@ -1,3 +1,7 @@
+# 0.2.10
+
+* made most of the fs calls asynchronous
+
 # 0.2.9
 
 * support for jetpack extensions (jpm now in beta) (thanks @jsantell)
