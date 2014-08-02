@@ -1,3 +1,7 @@
+# 0.2.11
+
+* catching profileDir delete errors on exit
+
 # 0.2.10
 
 * made most of the fs calls asynchronous
