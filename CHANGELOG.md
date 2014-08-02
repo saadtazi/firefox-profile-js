@@ -1,4 +1,4 @@
-# 0.2.11
+# 0.2.12
 
 * catching profileDir delete errors on exit
 
