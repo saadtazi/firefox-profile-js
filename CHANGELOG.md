@@ -1,3 +1,7 @@
+# 0.2.13
+
+* normalize extension path (thanks @halo2376)
+
 # 0.2.12
 
 * catching profileDir delete errors on exit
