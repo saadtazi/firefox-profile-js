@@ -96,7 +96,9 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
     fp.setPreference('extensions.firebug.console.enableSites', true);
     // show the console panel
     fp.setPreference('extensions.firebug.defaultPanelName', 'console');
-    
+    // done with prefs?
+    fp.updatePreferences();
+
     // you can install multiple extensions at the same time
     fp.addExtensions(['./test/extensions/firebug-1.12.4-fx.xpi'], function() {
         fp.encoded(function(zippedProfile) {
@@ -111,6 +113,8 @@ Make sur you have selenium server running... or use 'selenium-webdriver/remote' 
         });
 });
 ```
+
+You can also copy an existing profile... Check the doc `FirefoxProfile.copy(...)`.
 
 ## API Documentation
 

@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         }
       },
       options: {
-        files: ['test/*.js', 'test/**/*.js']
+        files: ['test/*.js', 'test/**/*.js', '!test/extensions/**/*.js']
       }
 
 

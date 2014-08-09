@@ -9,3 +9,4 @@ firefox-profile.sublime-workspace
 
 node_modules
 coverage/coverage.html
+test/dest-dir/
