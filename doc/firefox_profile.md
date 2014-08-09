@@ -1,11 +1,12 @@
-Constructor
+Firefox Profile
 
 _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 
 <a name="tableofcontents"></a>
 
-- <a name="toc_firefoxprofilecopyprofiledirectory"></a><a name="toc_firefoxprofile"></a>[FirefoxProfile.copy](#firefoxprofilecopyprofiledirectory)
-- <a name="toc_firefoxprofileprototypedeletedir"></a><a name="toc_firefoxprofileprototype"></a>[FirefoxProfile.prototype.deleteDir](#firefoxprofileprototypedeletedir)
+- <a name="toc_firefoxprofileoptions"></a>[FirefoxProfile](#firefoxprofileoptions)
+- <a name="toc_firefoxprofilecopyoptions"></a>[FirefoxProfile.copy](#firefoxprofilecopyoptions)
+- <a name="toc_firefoxprofileprototypedeletedira"></a><a name="toc_firefoxprofileprototype"></a>[FirefoxProfile.prototype.deleteDir](#firefoxprofileprototypedeletedira)
 - <a name="toc_firefoxprofileprototype_cleanonexit"></a>[FirefoxProfile.prototype._cleanOnExit](#firefoxprofileprototype_cleanonexit)
 - <a name="toc_firefoxprofileprototypeshoulddeleteonexittrue"></a>[FirefoxProfile.prototype.shouldDeleteOnExit](#firefoxprofileprototypeshoulddeleteonexittrue)
 - <a name="toc_firefoxprofileprototypewilldeleteonexit"></a>[FirefoxProfile.prototype.willDeleteOnExit](#firefoxprofileprototypewilldeleteonexit)
@@ -23,38 +24,55 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 - <a name="toc_firefoxprofileprototypeencodedfunction"></a>[FirefoxProfile.prototype.encoded](#firefoxprofileprototypeencodedfunction)
 - <a name="toc_firefoxprofileprototypesetproxyproxy"></a>[FirefoxProfile.prototype.setProxy](#firefoxprofileprototypesetproxyproxy)
 
-<a name="firefoxprofile"></a>
+# FirefoxProfile(options)
 
-# FirefoxProfile.copy(profileDirectory)
+> Initialize a new instance of a Firefox Profile.
 
-> creates a profile Profile from an existing firefox profile directory
-*
+Note that this function uses filesystem sync functions to copy an existing profile (id profileDirectory is provided)
+which is not optimized.
+If you need optimzed async version, use `FirefoxProfile.copy(profileDirectory, cb);`
 
 **Parameters:**
 
-- `{String | null} profileDirectory` optional. if provided, it will copy the directory synchronously
+- `{Object | String | null} options` optional. if it is an object, it can contain the following option:                                   * profileDirectory: the profile to copy. Not recommended: use [FirefoxProfile.copy](#firefoxprofilecopyoptions) instead
+                                 * destinationDirectory: where the profile will be stored. If not provided, 
+                                         a tmp direcoty will be used WARNING: if it will be emptied!!
+                            if it is a string it will copy the directory synchronously.
+                                   (not recommended at all, kept for backward compatibility)
+
+<sub>Go: [TOC](#tableofcontents)</sub>
+
+# FirefoxProfile.copy(options)
+
+> creates a profile Profile from an existing firefox profile directory asynchronously
+
+**Parameters:**
+
+- `{Object | String | null} options` if it is an object:                                   * profileDirectory - required - the profile to copy.
+                                 * destinationDirectory: where the profile will be stored. If not provided, 
+                                         a tmp direcoty will be used. WARNING: if it will be emptied!!
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile](#toc_firefoxprofile)</sub>
 
 <a name="firefoxprofileprototype"></a>
 
-# FirefoxProfile.prototype.deleteDir()
+# FirefoxProfile.prototype.deleteDir(a)
 
 > Deletes the profile directory asynchronously.
 
 Call it only if you do not need the profile. Otherwise use at your own risk.
-this function is automatically called by default (= if willDeleteOnExit() returns true)
 
- @param cb a callback function with boolean parameter (false if the dir is not found) 
-```js
-      that will be called when the profileDir is deleted
-```
+**Parameters:**
+
+- `{cb} a` callback function with boolean parameter (false if the dir is not found)        that will be called when the profileDir is deleted
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
 
 # FirefoxProfile.prototype._cleanOnExit()
 
 > called on exit to delete the profile directory synchronously.
+
+this function is automatically called by default (= if willDeleteOnExit() returns true) if a tmp directory is used
 
 should not be called directly. process.on('exit') cannot be asynchronous: async code is not called
 
@@ -89,7 +107,7 @@ Note: by default:
 > Set a user preference.
 
 Any modification to the user preference can be persisted using this.updatePreferences()
-If this.setPreference() is called before calling this.encoded(), then this.updatePreferences() 
+If this.setPreference() is called before calling this.encoded(), then this.updatePreferences()
 is automatically called.
 For a comprehensive list of preference keys, see http://kb.mozillazine.org/About:config_entries
 
@@ -130,7 +148,7 @@ For a comprehensive list of preference keys, see http://kb.mozillazine.org/About
 
 > Save user preferences to the user.js profile file.
 
-updatePreferences() is automatically called when encoded() is called 
+updatePreferences() is automatically called when encoded() is called
 (if needed = if setPreference() was called before calling encoded())
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile.prototype](#toc_firefoxprofileprototype)</sub>
