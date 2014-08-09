@@ -1,6 +1,7 @@
 var path = require('path');
 
 module.exports = {
+  dest: path.join(__dirname, 'dest-dir'),
   brandNewProfile: {
     expectedZip: 'UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA=='
   },
