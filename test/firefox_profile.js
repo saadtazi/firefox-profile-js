@@ -68,7 +68,7 @@ describe('firefox_profile', function() {
   describe('#Firefox.copy', function() {
 
     it('lock files should not be copied over', function(done) {
-      FirefoxProfile.copy(testProfiles.emptyProfile.path, function(fp) {
+      FirefoxProfile.copy(testProfiles.emptyProfile.path, function(err, fp) {
         expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
         ['.parentlock', 'lock', 'parent.lock'].forEach(function(lockFile) {
           expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
@@ -81,7 +81,7 @@ describe('firefox_profile', function() {
     it('should copy the profile into destinationDirectory if specified', function(done) {
       FirefoxProfile.copy({ profileDirectory: testProfiles.emptyProfile.path,
                                     destinationDirectory: testProfiles.dest
-      }, function(fp) {
+      }, function(err, fp) {
         expect(fp.profileDir).to.be.equal(testProfiles.dest);
         expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
         ['.parentlock', 'lock', 'parent.lock'].forEach(function(lockFile) {

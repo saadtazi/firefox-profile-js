@@ -1,7 +1,7 @@
 var FirefoxProfile,
 wd = require('wd');
 try {
- FirefoxProfile = require('./lib/firefox_profile');
+ FirefoxProfile = require('../lib/firefox_profile');
 } catch (e) {
   FirefoxProfile = require('firefox-profile');
 }
@@ -24,7 +24,7 @@ fp.setPreference('saadt.coucou', 'console');
 
 fp.updatePreferences();
 // you can install multiple extensions at the same time
-fp.addExtensions(['./test/extensions/firebug-2.0.1-fx.xpi'], function() {
+fp.addExtensions(['../test/extensions/firebug-2.0.1-fx.xpi'], function() {
   fp.encoded(function(zippedProfile) {
     browser = wd.promiseChainRemote();
     browser.init({

@@ -1,3 +1,11 @@
+# 0.3.2
+
+* modify some callback to follow the standard `(err, resp)`
+
+# 0.3.1
+
+* ability to specify a destination directory
+
 # 0.2.13
 
 * normalize extension path (thanks @halo2376)

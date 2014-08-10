@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {
@@ -46,8 +46,7 @@
     {
       "name": "Piotr Kuczynski",
       "url": "https://github.com/pkuczynski"
-    }
-    ,
+    },
     {
       "name": "halo2376",
       "url": "https://github.com/halo2376"
@@ -79,6 +78,7 @@
     "lodash": "~2.4.1",
     "node-uuid": "~1.4.1",
     "wrench": "~1.5.1",
-    "xml2js": "~0.4.0"
+    "xml2js": "~0.4.0",
+    "ini": "~1.2.1"
   }
 }
