@@ -2,7 +2,7 @@ var webdriver = require('selenium-webdriver');
 
 var FirefoxProfile;
 try {
- FirefoxProfile = require('./lib/firefox_profile');
+ FirefoxProfile = require('../lib/firefox_profile');
 } catch(e) {
   FirefoxProfile = require('firefox-profile');
 }
@@ -10,7 +10,7 @@ try {
 var myProfile = new FirefoxProfile();
 console.log(myProfile.profileDir);
 // add an extension by specifying the path to the xpi file or to the unzipped extension directory
-myProfile.addExtensions([ __dirname + '/test/extensions/firebug-2.0.1-fx.xpi'], function() {
+myProfile.addExtensions([ __dirname + '/../test/extensions/firebug-2.0.1-fx.xpi'], function() {
 
   var capabilities = webdriver.Capabilities.firefox();
 
