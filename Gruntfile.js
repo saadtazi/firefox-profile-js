@@ -4,6 +4,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-cov');
 
+
   var coverallsRepoToken = process.env.COVERALLS_REPO_TOKEN,
       coveralls = { serviceName: 'travis-ci' };
 
@@ -30,6 +31,7 @@ module.exports = function(grunt) {
         }
       },
       options: {
+        require: './test/require',
         files: ['test/*.js', 'test/**/*.js', '!test/extensions/**/*.js']
       }
 

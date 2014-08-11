@@ -1,6 +1,10 @@
+# 0.3.3
+
+* minor fixes, added tests for ProfileFinder
+
 # 0.3.2
 
-* modify some callback to follow the standard `(err, resp)`
+* modify some callbacks to follow the standard `(err, resp)`
 
 # 0.3.1
 

@@ -14,6 +14,7 @@ This class allows you to:
 
 * create a firefox profile
 * use an existing profile (by specifying a path)
+* use an existing user profile (by specifying a name)
 * add extensions to your profile,
 * specify proxy settings, 
 * set the user preferences... 

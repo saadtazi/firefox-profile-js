@@ -1,22 +1,11 @@
 /*jshint camelcase:false*/
-/*global describe:false, it:false, before, beforeEach:false, afterEach:false*/
+/*global sinon:false, testProfiles, expect, describe:false, it:false, before, beforeEach:false, afterEach:false*/
 
 'use strict';
 
-var chai            = require('chai'),
-    path            = require('path'),
-    expect          = chai.expect,
+var path            = require('path'),
     FirefoxProfile  = require('../lib/firefox_profile'),
-    fs              = require('fs'),
-    testProfiles    = require('./test_profiles'),
-    sinon           = require('sinon'),
-    sinonChai       = require('sinon-chai');
-
-chai.use(sinonChai);
-
-
-// chai.use(require('sinon-chai'));
-chai.use(require('chai-fs'));
+    fs              = require('fs');
 
 describe('firefox_profile', function() {
   var fp;
@@ -78,9 +67,58 @@ describe('firefox_profile', function() {
       });
     });
 
+    it('should return an error if no profileDirectory is provided', function(done) {
+      FirefoxProfile.copy({noProfileDirectory: true}, function(err) {
+        expect(err).to.be.an.instanceof(Error);
+        done();
+      });
+    });
+    
+
     it('should copy the profile into destinationDirectory if specified', function(done) {
       FirefoxProfile.copy({ profileDirectory: testProfiles.emptyProfile.path,
                                     destinationDirectory: testProfiles.dest
+      }, function(err, fp) {
+        expect(fp.profileDir).to.be.equal(testProfiles.dest);
+        expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
+        ['.parentlock', 'lock', 'parent.lock'].forEach(function(lockFile) {
+          expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
+        });
+        expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
+        done();
+      });
+    });
+
+  });
+
+  describe('#Firefox.copyFromUserProfile', function() {
+
+    it('lock files should not be copied over', function(done) {
+      FirefoxProfile.copyFromUserProfile({
+        userProfilePath: __dirname,
+        name: 'default'
+      }, function(err, fp) {
+        expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
+        ['.parentlock', 'lock', 'parent.lock'].forEach(function(lockFile) {
+          expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
+        });
+        expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
+        fp.deleteDir(done);
+      });
+    });
+
+    it('should return an error if no name is provided', function(done) {
+      FirefoxProfile.copyFromUserProfile({noName: true}, function(err) {
+        expect(err).to.be.an.instanceof(Error);
+        done();
+      });
+    });
+
+    it('should copy the profile into destinationDirectory if specified', function(done) {
+      FirefoxProfile.copyFromUserProfile({
+        userProfilePath: __dirname,
+        name: 'default',
+        destinationDirectory: testProfiles.dest
       }, function(err, fp) {
         expect(fp.profileDir).to.be.equal(testProfiles.dest);
         expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;

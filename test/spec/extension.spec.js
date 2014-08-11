@@ -1,31 +1,17 @@
 /*jshint camelcase:false*/
-/*global describe:false, it:false, after:false, before:false*/
+/*global describe:false, it:false, after:false */
 'use strict';
 
-var chai = require('chai'),
-    chaiAsPromised = require('chai-as-promised'),
-    wd = require('wd'),
+var wd = require('wd'),
     request = require('request'),
     browser,
 
     FirefoxProfile = require('../../lib/firefox_profile'),
     testProfiles = require('../test_profiles');
 
-chai.use(chaiAsPromised);
-chai.should();
 
 var username  = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME',
-    accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY',
-    jobId     =  process.env.TRAVIS_JOB_ID || 'JOB_ID';
-
-// console.log(username, accessKey);
-// having browser init in before() generates this error... Why?
-// Error: Not JSON response
-//       at webdriver._newError (/Users/saadtazi/Projects/firefox-profile-js/node_modules/wd/lib/webdriver.js:76:13)
-//       at /Users/saadtazi/Projects/firefox-profile-js/node_modules/wd/lib/webdriver.js:144:23
-//       at Request._callback (/Users/saadtazi/Projects/firefox-profile-js/node_modules/wd/lib/webdriver.js:367:5)
-//       at Request.self.callback (/Users/saadtazi/Projects/firefox-profile-js/node_modules/wd/node_modules/request/index.js:148:22)
-// before(function(done) {done();})
+    accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
 
 after(function(done) {
   this.timeout(0);
@@ -38,7 +24,7 @@ function sendStatusToSauceLabs(sessionID, passed, cb) {
   request.put({
       url: url,
       json: {passed: passed, public: 'public'}
-    }, function(err, response, body) {
+    }, function(/*err, response, body*/) {
       //console.log('request:: ', body);
       cb();
     });
@@ -88,8 +74,9 @@ describe('install extension', function() {
           // dirxml, $$ ... and console.table are defined by firebug
           // but only console.table is available from js (not in console)
           // because table method is probably added to the regular console 
+        /*jshint evil:true */
         .eval('console.table').then(function(res) {
-          res.should.contain('function');
+          expect(res).to.contain('function');
           if (browser.sessionID) {
             sendStatusToSauceLabs(browser.sessionID, true, function() { done(); });
           }

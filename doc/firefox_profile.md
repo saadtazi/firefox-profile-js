@@ -6,6 +6,7 @@ _Source: [lib/firefox_profile.js](../lib/firefox_profile.js)_
 
 - <a name="toc_firefoxprofileoptions"></a>[FirefoxProfile](#firefoxprofileoptions)
 - <a name="toc_firefoxprofilecopyoptions"></a>[FirefoxProfile.copy](#firefoxprofilecopyoptions)
+- <a name="toc_firefoxprofilecopyfromuserprofile"></a>[FirefoxProfile.copyFromUserProfile](#firefoxprofilecopyfromuserprofile)
 - <a name="toc_firefoxprofileprototypedeletedira"></a><a name="toc_firefoxprofileprototype"></a>[FirefoxProfile.prototype.deleteDir](#firefoxprofileprototypedeletedira)
 - <a name="toc_firefoxprofileprototype_cleanonexit"></a>[FirefoxProfile.prototype._cleanOnExit](#firefoxprofileprototype_cleanonexit)
 - <a name="toc_firefoxprofileprototypeshoulddeleteonexittrue"></a>[FirefoxProfile.prototype.shouldDeleteOnExit](#firefoxprofileprototypeshoulddeleteonexittrue)
@@ -51,6 +52,12 @@ If you need optimzed async version, use `FirefoxProfile.copy(profileDirectory, c
 - `{Object | String | null} options` if it is an object:                                   * profileDirectory - required - the profile to copy.
                                  * destinationDirectory: where the profile will be stored. If not provided, 
                                          a tmp direcoty will be used. WARNING: if it will be emptied!!
+
+<sub>Go: [TOC](#tableofcontents) | [FirefoxProfile](#toc_firefoxprofile)</sub>
+
+# FirefoxProfile.copyFromUserProfile()
+
+> copy a profile from the current user profile
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile](#toc_firefoxprofile)</sub>
 
