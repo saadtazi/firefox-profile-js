@@ -64,7 +64,7 @@
     "grunt": "~0.4.2",
     "grunt-apidox": "~0.1.4",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-mocha-cov": "0.2.1",
+    "grunt-mocha-cov": "~0.3.x",
     "mocha": "~1.21.x",
     "mocha-lcov-reporter": "0.0.1",
     "request": "~2.42.x",
