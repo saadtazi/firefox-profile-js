@@ -14,6 +14,7 @@ var username  = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME',
     accessKey = process.env.SAUCE_ACCESS_KEY || 'SAUCE_ACCESS_KEY';
 
 after(function(done) {
+  this.timeout(20000);
   browser && browser.quit().then(done);
 });
 
@@ -30,6 +31,7 @@ function sendStatusToSauceLabs(sessionID, passed, cb) {
 }
 
 describe('install extension', function() {
+  this.timeout(20000);
 
   it('should be able to install an extension in firefox and run firebug-specific javascript', function(done) {
     var fp = new FirefoxProfile(),
