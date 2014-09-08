@@ -31,7 +31,7 @@ function sendStatusToSauceLabs(sessionID, passed, cb) {
 }
 
 describe('install extension', function() {
-  this.timeout(20000);
+  this.timeout(120000);
 
   it('should be able to install an extension in firefox and run firebug-specific javascript', function(done) {
     var fp = new FirefoxProfile(),
