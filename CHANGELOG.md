@@ -1,3 +1,8 @@
+# 0.3.4
+
+* updated package versions
+* fixes SIGINT and exit process (thanks @XrXr)
+
 # 0.3.3
 
 * minor fixes, added tests for ProfileFinder
