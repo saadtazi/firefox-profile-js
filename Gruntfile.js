@@ -52,7 +52,7 @@ module.exports = function(grunt) {
     }
   });
   
-  grunt.registerTask('travis', ['mochacov:unit'/*, 'mochacov:coveralls'*/]);
+  grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coveralls']);
 
   grunt.registerTask('docs', 'apidox');
 };
