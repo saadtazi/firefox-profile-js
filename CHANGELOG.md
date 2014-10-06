@@ -1,3 +1,7 @@
+# 0.3.5
+
+* updated package versions
+
 # 0.3.4
 
 * updated package versions
