@@ -10,8 +10,7 @@ module.exports = {
     zipExerpts: ['EMAAAAAAAAAAAAAAAAKAAAAZ', 'WEMAAAAAAgAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAAA', 'AAAADoAAAAAAA==']
   },
   profileWithFirebug: {
-    extensions: [path.join(__dirname, 'extensions/firebug-2.0.1-fx.xpi')]
-    
+    extensions: [path.join(__dirname, 'extensions/firebug-2.0.6.xpi')]
+
   }
 };
-
