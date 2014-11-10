@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {
@@ -51,24 +51,24 @@
   }],
   "devDependencies": {
     "blanket": "~1.1.x",
-    "chai": "~1.9",
+    "chai": "~1.9.x",
     "chai-fs": "~0.1.x",
     "chai-as-promised": "~4.1.x",
     "grunt": "~0.4.x",
     "grunt-apidox": "~0.1.4",
     "grunt-contrib-watch": "~0.6.x",
     "grunt-mocha-cov": "~0.3.x",
-    "mocha": "~1.21.x",
+    "mocha": "~2.0.1",
     "mocha-lcov-reporter": "0.0.1",
-    "request": "~2.45.x",
-    "sinon": "~1.10.x",
+    "request": "~2.47.x",
+    "sinon": "~1.11.x",
     "sinon-chai": "~2.6.x",
     "wd": "~0.3.x"
   },
   "dependencies": {
     "jetpack-id": "0.0.4",
     "adm-zip": "~0.4.x",
-    "archiver": "~0.11",
+    "archiver": "~0.12.0",
     "async": "~0.9.0",
     "fs-extra": "~0.12.x",
     "lazystream": "~0.1.0",
