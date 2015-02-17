@@ -30,7 +30,7 @@ More info on user preferences [here](http://kb.mozillazine.org/User.js_file).
 
 ## Usage
 
-Make sur you have selenium server running... or use 'selenium-webdriver/remote' class.
+Make sure you have selenium server running... or use 'selenium-webdriver/remote' class.
 
 ### Steps
 
