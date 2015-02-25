@@ -51,7 +51,7 @@
   }],
   "devDependencies": {
     "blanket": "~1.1.x",
-    "chai": "~2.1.x",
+    "chai": "~1.9.x",
     "chai-fs": "~0.1.x",
     "chai-as-promised": "~4.2.x",
     "grunt": "~0.4.x",
