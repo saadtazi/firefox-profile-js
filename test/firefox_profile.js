@@ -10,6 +10,7 @@ var path            = require('path'),
 describe('firefox_profile', function() {
   var fp;
   beforeEach(function() {
+    // default basic profile
     fp = new FirefoxProfile();
   });
 
@@ -19,7 +20,7 @@ describe('firefox_profile', function() {
     }
   });
   afterEach(function(done) {
-    // will remove the onexit() call (that deletes the dir folder)
+    // will remove the onexit() calls (that deletes the dir folder)
     // prevents warning:
     //   possible EventEmitter memory leak detected.
     //   X listeners added. Use emitter.setMaxListeners() to increase limit.
@@ -31,7 +32,7 @@ describe('firefox_profile', function() {
       expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
     });
 
-    it('with string parameter, lock files should not be copied over', function() {
+    it('with string parameter, lock files should not be copied over', function(done) {
       var fp = new FirefoxProfile(testProfiles.emptyProfile.path);
       expect(fp.profileDir.slice(-5)).to.be.equal('-copy');
       expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
@@ -39,9 +40,10 @@ describe('firefox_profile', function() {
         expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
       });
       expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
+      fp.deleteDir(done);
     });
 
-    it('should copy the profile into destinationDirectory if specified', function() {
+    it('should copy the profile into destinationDirectory if specified', function(done) {
       var fp = new FirefoxProfile({ profileDirectory: testProfiles.emptyProfile.path,
                                     destinationDirectory: testProfiles.dest
       });
@@ -51,6 +53,8 @@ describe('firefox_profile', function() {
         expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
       });
       expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
+      // to clean events
+      fp.deleteDir(done);
     });
 
   });
@@ -85,7 +89,8 @@ describe('firefox_profile', function() {
           expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
         });
         expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
-        done();
+        // to clean events
+        fp.deleteDir(done);
       });
     });
 
@@ -103,6 +108,7 @@ describe('firefox_profile', function() {
           expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
         });
         expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
+        // to clean events
         fp.deleteDir(done);
       });
     });
@@ -126,7 +132,8 @@ describe('firefox_profile', function() {
           expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
         });
         expect(fs.existsSync(path.join(fp.profileDir, 'empty.file'))).to.be.true;
-        done();
+        // to clean events
+        fp.deleteDir(done);
       });
     });
 
