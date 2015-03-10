@@ -1,6 +1,6 @@
 {
   "name": "firefox-profile",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
   "directories": {
@@ -48,6 +48,9 @@
   }, {
     "name": "XrXr",
     "url": "https://github.com/XrXr"
+  }, {
+    "name": "Christoph Dorn",
+    "url": "http://www.christophdorn.com/"
   }],
   "devDependencies": {
     "blanket": "~1.1.x",
