@@ -1,3 +1,20 @@
+# 0.3.10
+
+* added .npmignore
+
+# 0.3.9
+
+* updated package versions
+
+# 0.3.8
+
+* user preferences parsing fix (thanks @cadorn)
+* updated package versions
+
+# 0.3.7
+
+* updated package versions
+
 # 0.3.6
 
 * updated package versions
