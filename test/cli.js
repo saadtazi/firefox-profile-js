@@ -7,7 +7,7 @@ var fs = require('fs'),
 
 describe('firefox profile command line interface (CLI)', function() {
   // give some time to execute (mostly because of my poor old slow Mac)
-  this.timeout(2000);
+  this.timeout(6000);
 
   describe('when called with -h or --help', function () {
     ['-h', '--help'].forEach(function (flag) {
@@ -49,19 +49,30 @@ describe('firefox profile command line interface (CLI)', function() {
   });
 
   describe('when called with -b or --base64', function () {
-    it('should write to stdoutthe base64 zipped representation of the profile if no value is specified', function () {
+
+    var outputFilePath = path.join(testProfiles.dest, 'emptyProfile.prof');
+    
+    before(function (done) {
+      if (fs.existsSync(outputFilePath)) {
+        fs.unlink(outputFilePath, done);
+        return;
+      }
+      done();
+    });
+    it('should write to stdoutthe base64 zipped representation of the profile if no value is specified', function (done) {
       exec('./lib/cli.js -b', function (err, stdout) {
         expect(err).to.be.null;
-        expect(stdout).to.eql(testProfiles.brandNewProfile);
+        expect(stdout).to.eql(testProfiles.brandNewProfile.expectedZip);
         done();
       });
     });
-    it('should write to a file the base64 zipped representation of the profile if a file_path is specified', function () {
-      var outputFilePath = path.join(testProfiles.dest, 'emptyProfile.prof');
+    it('should write to a file the base64 zipped representation of the profile if a file_path is specified', function (done) {
       exec('./lib/cli.js -b ' + outputFilePath, function (err, stdout) {
         expect(err).to.be.null;
         expect(fs.existsSync(outputFilePath)).to.be.true;
-        expect(fs.readFileSync(outputFilePath)).to.eql(testProfiles.brandNewProfile);
+        var fileContent  = fs.readFileSync(outputFilePath, {encoding: 'utf8'});
+        
+        expect(fileContent).to.eql(testProfiles.brandNewProfile.expectedZip);
         done();
       });
     });

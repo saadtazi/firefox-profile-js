@@ -15,12 +15,11 @@ var username  = process.env.SAUCE_USERNAME || 'SAUCE_USERNAME',
 
 after(function(done) {
   this.timeout(20000);
-  browser && browser.quit().then(done);
+  browser? browser.quit().then(done) : done();
 });
 
 function sendStatusToSauceLabs(sessionID, passed, cb) {
   var url = 'http://' + username + ':' + accessKey + '@saucelabs.com/rest/v1/' + username + '/jobs/' + sessionID;
-  console.log('url::', url);
   request.put({
       url: url,
       json: {passed: passed, public: 'public'}
