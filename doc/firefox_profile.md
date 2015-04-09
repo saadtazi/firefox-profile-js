@@ -35,11 +35,15 @@ If you need optimzed async version, use `FirefoxProfile.copy(profileDirectory, c
 
 **Parameters:**
 
-- `{Object | String | null} options` optional. if it is an object, it can contain the following option:                                   * profileDirectory: the profile to copy. Not recommended: use [FirefoxProfile.copy](#firefoxprofilecopyoptions) instead
-                                 * destinationDirectory: where the profile will be stored. If not provided, 
-                                         a tmp direcoty will be used WARNING: if it will be emptied!!
-                            if it is a string it will copy the directory synchronously.
-                                   (not recommended at all, kept for backward compatibility)
+- `{Object | String | null} options` optional.  
+
+If it is an object, it can contain the following option: 
+* profileDirectory: the profile to copy. Not recommended: use [FirefoxProfile.copy](#firefoxprofilecopyoptions) instead
+* destinationDirectory: where the profile will be stored. If not provided, 
+   a tmp directory will be used WARNING: if the tmp directory will be deleted when the process will terminate.
+
+if it is a string it will copy the directory synchronously
+  (not recommended at all, kept for backward compatibility).
 
 <sub>Go: [TOC](#tableofcontents)</sub>
 
@@ -49,9 +53,11 @@ If you need optimzed async version, use `FirefoxProfile.copy(profileDirectory, c
 
 **Parameters:**
 
-- `{Object | String | null} options` if it is an object:                                   * profileDirectory - required - the profile to copy.
-                                 * destinationDirectory: where the profile will be stored. If not provided, 
-                                         a tmp direcoty will be used. WARNING: if it will be emptied!!
+- `{Object | String | null} options` 
+if it is an object, the following properties are available: 
+* profileDirectory - required - the profile to copy.
+* destinationDirectory: where the profile will be stored. If not provided, 
+   a tmp directory will be used. WARNING: if the tmp directory will be deleted when the process exits.
 
 <sub>Go: [TOC](#tableofcontents) | [FirefoxProfile](#toc_firefoxprofile)</sub>
 

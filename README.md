@@ -21,6 +21,8 @@ This class allows you to:
 
 More info on user preferences [here](http://kb.mozillazine.org/User.js_file).
 
+It also contains a [command line interface](#command-line-interface) that allows to copy or create profiles.
+
 ## Installation
 
 ~~"real" npm support is on its way... soon... maybe... Open an issue if you need it...~~ Use npm:
@@ -48,7 +50,7 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
      * with selenium webdriverJs
      * installs firebug 
      * and make http://saadtazi.com the url that is opened on new tabs
-    /******************************************************************
+    /******************************************************************/
     var webdriver = require('selenium-webdriver');
 
     // create profile
@@ -83,7 +85,7 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
     /**************************************************
     /* with admc/wd
     /* installs firebug, and make it active by default
-    /**************************************************
+    /**************************************************/
 
     var FirefoxProfile = require('firefox-profile'),
         wd = require('wd');
@@ -116,6 +118,24 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
 ```
 
 You can also copy an existing profile... Check the doc `FirefoxProfile.copy(...)`.
+
+## Command Line Interface
+
+It allows to copy (from profile name or profile directory) or create firefox profiles with installed extensions. Note that it does not allow to load user preferences... yet.
+
+Run `node_modules/bin/firefox-profile -h` to get the help message:
+
+```
+usage: firefox-profile [-v] [-p profilename || -c profile_dir] [-e extension_path1 [-e extension_path2]] [-o destination_dir || --ouput destination_dir || -b [file_path] || --base64 [file_path]]
+
+-v: verbose mode (same as --verbose)
+-h: show this message (same as --help)
+-p profilename: profile to copy (same as --profile)
+-c profile_dir: profile folder path to copy (same as --copy)
+-e extension_path: file path to extension to add to the profile. Can be present multiple times (same as --extension)
+-o destination_dir (or --output destination_dir): folder where the profile will be created.
+-b [file_path](or --base64): write the encoded firefox profile to stdout or to file_path if specified.
+```
 
 ## API Documentation
 

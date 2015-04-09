@@ -31,8 +31,8 @@ module.exports = function(grunt) {
         }
       },
       options: {
-        require: './test/require',
-        files: ['test/*.js', 'test/**/*.js', '!test/extensions/**/*.js']
+        require: './test/require.js',
+        files: ['test/*.js', 'test/cli.js', 'test/spec/*.js', '!test/require.js', '!test/extensions/**/*.js']
       }
 
 
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['**/*.js'],
+        files: ['lib/**/*.js', 'test/**/*.js'],
         tasks: ['mochacov'],
         options: {
           spawn: false,
