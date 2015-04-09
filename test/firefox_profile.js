@@ -14,11 +14,6 @@ describe('firefox_profile', function() {
     fp = new FirefoxProfile();
   });
 
-  before(function() {
-    if (!fs.existsSync(testProfiles.dest)) {
-      fs.mkdirSync(testProfiles.dest);
-    }
-  });
   afterEach(function(done) {
     // will remove the onexit() calls (that deletes the dir folder)
     // prevents warning:

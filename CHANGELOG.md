@@ -1,3 +1,7 @@
+# 0.3.11
+
+* added a cli to create or copy profile
+
 # 0.3.10
 
 * added .npmignore
