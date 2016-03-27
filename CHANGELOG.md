@@ -1,3 +1,10 @@
+# 0.3.12
+
+* bugfix with unziped extensions
+* CI now against node 0.12 and 4.4
+* updated package versions
+
+
 # 0.3.11
 
 * added a cli to create or copy profile
