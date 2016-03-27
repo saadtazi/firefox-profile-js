@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-- '0.10'
+- '0.12'
+- '4.4'
 # - '0.8'
 env:
   global:
@@ -9,4 +10,4 @@ env:
   - secure: dS/t0sNKcBmR1gD9KA7Ks3Gjtl2MjRNcDCEIGajO86ZhU774zhOxtd58upgZx7lVCzGJxM9wLrUD7SeSthdkNQOndOdJFJe9pQWfY5zjj58t/XAgiH0VY8qrIf9AnEtBdvorSQRwKPRVE5ZkvYUpoRn4Rj9fnBCzw7OPFK/08Kc=
 
 before_script: npm install -g grunt-cli
-script: grunt travis 
+script: grunt travis
