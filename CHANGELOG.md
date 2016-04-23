@@ -1,3 +1,7 @@
+# 0.3.13
+
+* updated package versions
+
 # 0.3.12
 
 * bugfix with unziped extensions

@@ -72,7 +72,7 @@ describe('install extension', function() {
           // see http://getfirebug.com/wiki/index.php/Command_Line_API
           // dirxml, $$ ... and console.table are defined by firebug
           // but only console.table is available from js (not in console)
-          // because table method is probably added to the regular console 
+          // because table method is probably added to the regular console
         /*jshint evil:true */
         .eval('console.table').then(function(res) {
           expect(res).to.contain('function');
