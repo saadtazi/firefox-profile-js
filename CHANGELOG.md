@@ -1,3 +1,8 @@
+# 0.4.0
+
+* remove [`wrench`](https://github.com/ryanmcgrath/wrench-js) dependency (no longer maintained), replaced by [`fs-extra`](https://github.com/jprichardson/node-fs-extra)
+* updated package versions
+
 # 0.3.13
 
 * updated package versions
