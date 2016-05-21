@@ -51,7 +51,7 @@ describe('firefox profile command line interface (CLI)', function() {
   describe('when called with -b or --base64', function () {
 
     var outputFilePath = path.join(testProfiles.dest, 'emptyProfile.prof');
-    
+
     before(function (done) {
       if (fs.existsSync(outputFilePath)) {
         fs.unlink(outputFilePath, done);
@@ -71,11 +71,10 @@ describe('firefox profile command line interface (CLI)', function() {
         expect(err).to.be.null;
         expect(fs.existsSync(outputFilePath)).to.be.true;
         var fileContent  = fs.readFileSync(outputFilePath, {encoding: 'utf8'});
-        
+
         expect(fileContent).to.eql(testProfiles.brandNewProfile.expectedZip);
         done();
       });
     });
   });
-  
 });

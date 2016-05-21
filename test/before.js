@@ -1,14 +1,12 @@
 /* global testProfiles:false*/
 'use strict';
 
-var fs = require('fs'),
-    wrench = require('wrench');
+var fsa = require('fs-extra');
 
 // global before
 beforeEach(function() {
-  if (fs.existsSync(testProfiles.dest)) {
-    wrench.rmdirSyncRecursive(testProfiles.dest, false);
+  if (fsa.existsSync(testProfiles.dest)) {
+    fsa.removeSync(testProfiles.dest);
   }
-  fs.mkdirSync(testProfiles.dest);
-
+  fsa.mkdirSync(testProfiles.dest);
 });

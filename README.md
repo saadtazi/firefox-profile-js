@@ -151,7 +151,7 @@ Requires [apidox](https://github.com/codeactual/apidox) - listed in devDependenc
     grunt mochacov:unit
 
 ## Coverage
-    
+
     grunt mochacov:coverage
 
 Generates doc/coverage.html
@@ -161,7 +161,7 @@ Generates doc/coverage.html
 * ~~add documentation and comments~~
 * ~~write tests~~
 * ~~fix bugs~~
-* write more tests
+* ~~write more tests~~
 * fix more bugs
 * ~~clean tmp directory on process 'exit' and 'SIGINT'~~
 
