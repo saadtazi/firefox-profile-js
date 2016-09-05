@@ -1,3 +1,7 @@
+# 0.4.1
+
+* fix CLI empty profile creation
+
 # 0.4.0
 
 * remove [`wrench`](https://github.com/ryanmcgrath/wrench-js) dependency (no longer maintained), replaced by [`fs-extra`](https://github.com/jprichardson/node-fs-extra)

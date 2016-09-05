@@ -7,8 +7,8 @@ node_js:
 env:
   global:
 # saucelabs
-  - secure: "gqxXmwQTPK0xOeOauBUrRk19V8JRGQn78KZKUHR9nIlCkx60JsNyhMs5P8zKMI88rRAv67K9RiW7VGy0eqXiCmVcmesB5z5UpRocLDeF44OXyoijT7iKMSXyNwBZIsN3ffNTGel01tUFlc7eE7yV/dNtth6LtGhmGviyTSFdeWY="
-  - secure: "Bh+dZvnBP0tu604ZIWLFwpdRrIrwws6fx4/q0m43NDzDj13YffDmNItCVW+SoNh5f8w7LQipHOJWmfmNroefJyBy5Ex1D5dy2C/2/JJhL4xzQ8dHOa/SWPWf4MNi7j+a2Jc78bOiJPVR7SBFm/4dT2exfq9zsVHDBrod4sXIRJM="
+  - secure: "Yqr5ndhUcFU+pnHsPVEo0EPaKJepA7RsASow3MH2aCFcjMf4WXi87cDCd2Z9D4gktICeZuuixDPlaTRzaADdXkbLRhgapYZer2Ug7nNa5lMmp+K7An8MMipx+2FSRqQh6af23Pso1ezY/MKQmIjahSUIdm29v/oUUvJcQ8wdB3c="
+  - secure: "LEZYzdP3k/76Ekv5NEDuiTn7GaIk+LeqhGgQ2DGD5L5/UfSrlQbJoM1MQlW0Qrde1BMJe+Gne+blfS6LMY/IffN8UeqX5zEIO/v5uzxSyaOXrl6wVIclNnCpg24iB988o9zxrR6sSDJTy6NcFquiL6AMkveD7m+qo1Pr/XQ+PRQ="
 
 before_script: npm install -g grunt-cli
 script: grunt travis
