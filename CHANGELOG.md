@@ -1,3 +1,7 @@
+# 0.4.2
+
+* add `encode` method to make it compatible with `selenium-webdriver`
+
 # 0.4.1
 
 * fix CLI empty profile creation
