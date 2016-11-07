@@ -326,6 +326,14 @@ describe('firefox_profile', function() {
         done();
       });
     });
+
+    it('should not unzip webextensions in profile folder' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/webextension.xpi'), function() {
+        var exensionDir = path.join(fp.profileDir, 'extensions', 'webextension@test.test.xpi');
+        expect(fs.statSync(exensionDir).isFile()).to.be.true;
+        done();
+      });
+    });
   });
 
   describe('#path', function() {
