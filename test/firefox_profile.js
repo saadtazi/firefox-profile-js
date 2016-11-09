@@ -334,6 +334,33 @@ describe('firefox_profile', function() {
         done();
       });
     });
+
+    it('should return the addon details gathered from install.rdf' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/png-extension.xpi'), function(err, addonDetails) {
+        expect(addonDetails.id).to.equal('id@test.test');
+        expect(addonDetails.name).to.equal('test-extension');
+        expect(addonDetails.version).to.equal('2.1.0');
+        done();
+      });
+    });
+
+    it('should return the addon details gathered from package.json' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/jetpack-extension.xpi'), function(err, addonDetails) {
+        expect(addonDetails.id).to.equal('jetpack-addon@test.test');
+        expect(addonDetails.name).to.equal('Jetpack-addon-test');
+        expect(addonDetails.version).to.equal('0.0.1');
+        done();
+      });
+    });
+
+    it('should return the addon details gathered from manifest.json' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/webextension.xpi'), function(err, addonDetails) {
+        expect(addonDetails.id).to.equal('webextension@test.test');
+        expect(addonDetails.name).to.equal('Test');
+        expect(addonDetails.version).to.equal('1.0');
+        done();
+      });
+    });
   });
 
   describe('#path', function() {
