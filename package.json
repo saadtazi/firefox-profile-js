@@ -3,6 +3,7 @@
   "version": "0.4.3",
   "description": "firefox profile for selenium WebDriverJs, admc/wd or any other node selenium driver that supports capabilities",
   "main": "lib/firefox_profile",
+  "types": "lib/firefox_profile.d.ts",
   "directories": {
     "test": "test"
   },
