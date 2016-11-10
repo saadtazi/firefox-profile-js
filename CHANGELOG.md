@@ -1,3 +1,10 @@
+# 0.4.3
+
+* add webexension support (thanks @hbenl)
+* add Typescript (thanks @hbenl)
+* updated dependencies versions
+
+
 # 0.4.2
 
 * add `encode` method to make it compatible with `selenium-webdriver`
