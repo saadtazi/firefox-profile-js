@@ -34,31 +34,40 @@
   "bugs": {
     "url": "https://github.com/saadtazi/firefox-profile-js/issues"
   },
-  "contributors": [{
-    "name": "testingbot",
-    "url": "http://www.testingbot.com"
-  }, {
-    "name": "David Sturley",
-    "url": "https://github.com/circusbred"
-  }, {
-    "name": "Jordan Santell",
-    "url": "http://jsantell.com"
-  }, {
-    "name": "Piotr Kuczynski",
-    "url": "https://github.com/pkuczynski"
-  }, {
-    "name": "halo2376",
-    "url": "https://github.com/halo2376"
-  }, {
-    "name": "XrXr",
-    "url": "https://github.com/XrXr"
-  }, {
-    "name": "Christoph Dorn",
-    "url": "http://www.christophdorn.com/"
-  }, {
-    "name": "Holger Benl",
-    "url": "https://github.com/hbenl"
-  }],
+  "contributors": [
+    {
+      "name": "testingbot",
+      "url": "http://www.testingbot.com"
+    },
+    {
+      "name": "David Sturley",
+      "url": "https://github.com/circusbred"
+    },
+    {
+      "name": "Jordan Santell",
+      "url": "http://jsantell.com"
+    },
+    {
+      "name": "Piotr Kuczynski",
+      "url": "https://github.com/pkuczynski"
+    },
+    {
+      "name": "halo2376",
+      "url": "https://github.com/halo2376"
+    },
+    {
+      "name": "XrXr",
+      "url": "https://github.com/XrXr"
+    },
+    {
+      "name": "Christoph Dorn",
+      "url": "http://www.christophdorn.com/"
+    },
+    {
+      "name": "Holger Benl",
+      "url": "https://github.com/hbenl"
+    }
+  ],
   "devDependencies": {
     "blanket": "~1.2.x",
     "chai": "~1.9.x",
@@ -85,7 +94,7 @@
     "lazystream": "~1.0.0",
     "lodash": "~4.16.0",
     "minimist": "^1.1.1",
-    "node-uuid": "~1.4.7",
+    "uuid": "^3.0.0",
     "xml2js": "~0.4.4"
   }
 }
