@@ -1,3 +1,7 @@
+# 0.4.4
+
+* package update: node-uuid --> uuid
+
 # 0.4.3
 
 * add webexension support (thanks @hbenl)
