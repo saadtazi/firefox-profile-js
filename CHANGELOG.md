@@ -1,3 +1,7 @@
+# 0.4.5
+
+* fix ctl-c exit
+
 # 0.4.4
 
 * package update: node-uuid --> uuid
