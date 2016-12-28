@@ -1,4 +1,8 @@
-# 0.4.5
+# 0.4.6
+
+* (better) fix ctl-c exit
+
+# 0.4.5 - DO NOT USE - BROKEN
 
 * fix ctl-c exit
 
