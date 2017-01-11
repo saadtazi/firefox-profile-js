@@ -1,3 +1,7 @@
+# 0.4.7
+
+* remove `os.tmpDir` deprecation warning (thanks @pdehaan)
+
 # 0.4.6
 
 * (better) fix ctl-c exit
