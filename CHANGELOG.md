@@ -1,3 +1,7 @@
+# 0.4.8
+
+* fix `archiver.bulk()` deprecation warning (thanks @zdglagola)
+
 # 0.4.7
 
 * remove `os.tmpDir` deprecation warning (thanks @pdehaan)
