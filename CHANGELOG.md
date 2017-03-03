@@ -1,3 +1,7 @@
+# 0.4.9
+
+* better tmp folder cleanup (thanks @Foxhind)
+
 # 0.4.8
 
 * fix `archiver.bulk()` deprecation warning (thanks @zdglagola)
