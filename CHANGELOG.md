@@ -1,6 +1,7 @@
-# 0.4.10
+# 0.5.0
 
 * Make sure to load user settings if existing profile (thanks @lutostag)
+* Drop support for node 0.12
 
 # 0.4.9
 
