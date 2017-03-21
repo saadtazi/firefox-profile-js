@@ -1,3 +1,7 @@
+# 0.4.10
+
+* Make sure to load user settings if existing profile (thanks @lutostag)
+
 # 0.4.9
 
 * better tmp folder cleanup (thanks @Foxhind)
