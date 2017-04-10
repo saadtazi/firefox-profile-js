@@ -1,3 +1,9 @@
+
+Note: This project has been superceded by selenium-webdriver/firefox:
+http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/index.html
+
+
+
 # firefox-profile-js
 
 [![Build Status](https://travis-ci.org/saadtazi/firefox-profile-js.png)](https://travis-ci.org/saadtazi/firefox-profile-js)
