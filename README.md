@@ -123,7 +123,11 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
 
     // you can install multiple extensions at the same time
     fp.addExtensions(['./test/extensions/firebug-1.12.4-fx.xpi'], function() {
-        fp.encoded(function(zippedProfile) {
+        fp.encoded(function(err, zippedProfile) {
+            if (err) {
+                console.error('oops, an error occured:', err);
+                return;
+            }
             browser = wd.promiseChainRemote();
             browser.init({
               browserName:'firefox',

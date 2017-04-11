@@ -69,10 +69,8 @@ describe('install extension', function() {
         })
         .get('http://saadtazi.com')
         .sleep(1000)
-          // see http://getfirebug.com/wiki/index.php/Command_Line_API
-          // dirxml, $$ ... and console.table are defined by firebug
-          // but only console.table is available from js (not in console)
-          // because table method is probably added to the regular console
+          // note: console.table used to be exclusive to firebug,
+          // but it is now only implemented by most modern browsers
         /*jshint evil:true */
         .eval('console.table').then(function(res) {
           expect(res).to.contain('function');
