@@ -232,7 +232,7 @@ describe('firefox_profile', function() {
       spy.restore();
     });
     it('should work with a brand new profile', function(done) {
-      fp.encoded(function(zippedProfileString) {
+      fp.encoded(function(error, zippedProfileString) {
         expect(zippedProfileString).to.be.equal(testProfiles.brandNewProfile.expectedZip);
         done();
       });

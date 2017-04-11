@@ -1,3 +1,7 @@
+# 1.0.0
+
+* BREAKING CHANGE: handle errors in `encoded(cb)` callback function
+
 # 0.5.0
 
 * Make sure to load user settings if existing profile (thanks @lutostag)

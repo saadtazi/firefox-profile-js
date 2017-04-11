@@ -25,7 +25,11 @@ fp.setPreference('saadt.coucou', 'console');
 fp.updatePreferences();
 // you can install multiple extensions at the same time
 fp.addExtensions(['../test/extensions/firebug-2.0.1-fx.xpi'], function() {
-  fp.encoded(function(zippedProfile) {
+  fp.encoded(function(err, zippedProfile) {
+    if (err) { 
+      console.log('oops, error!', err);
+      return;
+    }
     browser = wd.promiseChainRemote();
     browser.init({
       browserName:'firefox',
