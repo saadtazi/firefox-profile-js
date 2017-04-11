@@ -7,8 +7,17 @@
 
 [![NPM](https://nodei.co/npm/firefox-profile.png)](https://nodei.co/npm/firefox-profile/)
 
-Firefox Profile for [Selenium WebdriverJS](https://code.google.com/p/selenium/wiki/WebDriverJs),
-[admc/wd](https://github.com/admc/wd) or any other library that allows you to set capabilities.
+Create or update Firefox Profile programmatically.
+
+## Notes for Selenium-webdriver package users
+
+If you are using [`selenium-webdriver` package](http://seleniumhq.github.io/selenium/docs/api/javascript/), you no longer need to use this package: `selenium-webdriver` package now implements [a class that allows to create firefox profiles](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/profile.html). And this new class [doesn't play well](/saadtazi/firefox-profile-js/issues/86) with this package. Check
+[this link](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/index.html)
+for an example on how to set your own profile with `selenium-webdriver`.
+
+This package is still useful if you use another webdriver library like [`wd.js`](http://admc.io/wd/) or any other webdriver json wire protocol implementation (`webdriver.io`?).
+
+# Introduction
 
 This class allows you to:
 
@@ -17,9 +26,12 @@ This class allows you to:
 * use an existing user profile (by specifying a name)
 * add extensions to your profile,
 * specify proxy settings, 
-* set the user preferences... 
+* set the user preferences...
+
 
 More info on user preferences [here](http://kb.mozillazine.org/User.js_file).
+
+
 
 It also contains a [command line interface](#command-line-interface) that allows to copy or create profiles.
 
@@ -27,8 +39,15 @@ It also contains a [command line interface](#command-line-interface) that allows
 
 ~~"real" npm support is on its way... soon... maybe... Open an issue if you need it...~~ Use npm:
 
-    npm install firefox-profile
+```
+npm install firefox-profile
+```
 
+or `yarn`:
+
+```
+yarn add firefox-profile
+```
 
 ## Usage
 
