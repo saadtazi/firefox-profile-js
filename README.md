@@ -87,7 +87,7 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
         
         // attach your newly created profile
         
-        myProfile.encoded(function(encodedProfile) {
+        myProfile.encoded(function(err, encodedProfile) {
             capabilities.set('firefox_profile', encodedProfile);
 
             
