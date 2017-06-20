@@ -70,8 +70,8 @@ declare class FirefoxProfile {
 	setAssumeUntrustedCertIssuer(assumeUntrusted: boolean): void;
 	nativeEventsEnabled(): boolean;
 	setNativeEventsEnabled(enabled: boolean): void;
-	encoded(cb: (encodedProfile: string) => void): void;
-	encode(cb: (encodedProfile: string) => void): void;
+	encoded(cb: (err: any, encodedProfile: string) => void): void;
+	encode(cb: (err: any, encodedProfile: string) => void): void;
 	setProxy(proxySettings: ProxySettings): void;
 }
 
