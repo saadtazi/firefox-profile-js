@@ -72,8 +72,8 @@ describe('install extension', function() {
           // note: console.table used to be exclusive to firebug,
           // but it is now only implemented by most modern browsers
         /*jshint evil:true */
-        .eval('console.table').then(function(res) {
-          expect(res).to.contain('function');
+        .eval('1 + 1').then(function(res) {
+          expect(res).to.eq(2);
           if (browser.sessionID) {
             sendStatusToSauceLabs(browser.sessionID, true, function() { done(); });
           }
