@@ -1,3 +1,11 @@
+# 1.0.2
+
+* fix TS typings and example in README
+
+# 1.0.1
+
+* Update async from 2.3.0 to 2.4.1 (thanks @EsrefDurna)
+
 # 1.0.0
 
 * BREAKING CHANGE: handle errors in `encoded(cb)` callback function
