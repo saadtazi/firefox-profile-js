@@ -1,3 +1,5 @@
+import ProfileFinder = require('./profile_finder');
+
 declare interface ConstructorOptions {
 	profileDirectory?: string;
 	destinationDirectory?: string;
@@ -32,19 +34,6 @@ declare interface ManualProxySettings {
 
 declare type ProxySettings = NoProxySettings | SystemProxySettings | AutomaticProxySettings | ManualProxySettings;
 
-declare class ProfileFinder {
-	constructor(directory?: string);
-	directory: string;
-	hasReadProfiles: boolean;
-	profiles: string[];
-	readProfiles(cb: (err: Error | null, profiles?: string[]) => void): void;
-	getPath(name: string, cb: (err: Error | null, path: string | undefined) => void): string | undefined;
-}
-
-declare namespace ProfileFinder {
-	function locateUserDirectory(platform?: string): string | undefined;
-}
-
 declare interface AddonDetails {
 	id: string;
 	name: string;
@@ -54,6 +43,9 @@ declare interface AddonDetails {
 }
 
 declare class FirefoxProfile {
+	static copy(options: ConstructorOptions | string | null | undefined, cb: (err: Error | null, profile?: FirefoxProfile) => void): void;
+	static copyFromUserProfile(options: CopyFromUserProfileOptions, cb: (err: Error | null, profile?: FirefoxProfile) => void): void;
+	static Finder: typeof ProfileFinder;
 	constructor(options?: ConstructorOptions | string);
 	defaultPreferences: any;
 	deleteDir(cb: () => void): void;
@@ -75,12 +67,4 @@ declare class FirefoxProfile {
 	setProxy(proxySettings: ProxySettings): void;
 }
 
-declare namespace FirefoxProfile {
-	function copy(options: ConstructorOptions | string | null | undefined, cb: (err: Error | null, profile?: FirefoxProfile) => void): void;
-	function copyFromUserProfile(options: CopyFromUserProfileOptions, cb: (err: Error | null, profile?: FirefoxProfile) => void): void;
-	var Finder: typeof ProfileFinder;
-}
-
-declare module "firefox-profile" {
-	export = FirefoxProfile;
-}
+export = FirefoxProfile;
