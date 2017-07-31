@@ -1,3 +1,7 @@
+# 1.0.3
+
+* more TS typing fixes
+
 # 1.0.2
 
 * fix TS typings and example in README
