@@ -21,22 +21,45 @@ fp.setPreference('extensions.firebug.script.enableSites', true);
 fp.setPreference('extensions.firebug.currentVersion', '2.0.1');
 fp.setPreference('extensions.firebug.defaultPanelName', 'console');
 fp.setPreference('saadt.coucou', 'console');
+fp.setPreference('browser.startup.homepage', 'http://saadtazi.com');
+// fp.setPreference('browser.startup.homepage_welcome_url', 'http://saadtazi.com');
+// fp.setPreference('startup.homepage_welcome_url', 'http://saadtazi.com');
+fp.setPreference('browser.startup.page', '1');
 
 fp.updatePreferences();
 // you can install multiple extensions at the same time
-fp.addExtensions(['../test/extensions/firebug-2.0.1-fx.xpi'], function() {
-  fp.encoded(function(err, zippedProfile) {
-    if (err) { 
-      console.log('oops, error!', err);
-      return;
-    }
-    browser = wd.promiseChainRemote();
-    browser.init({
+fp.encoded(function(err, zippedProfile) {
+  if (err) { 
+    console.log('oops, error!', err);
+    return;
+  }
+  browser = wd.remote({
+    protocol: 'http:',
+    hostname: '127.0.0.1',
+    port: '4444',
+    // pathname: '/' // if you use geckodriver directly (without selenium server)
+  }, 'promiseChain');
+  browser.init({
       browserName:'firefox',
-          // set firefox_profile capabilities HERE!!!!
-          firefox_profile: zippedProfile
-        }).
-        // woOot!!
-        get('http://en.wikipedia.org');
-      });
-});
+      marionette: true, // firefox 47+
+      'moz:firefoxOptions': {
+          // set firefox profile capabilities HERE!!!!
+          profile: zippedProfile
+        }
+      })
+      // NOTE: for non-geckodriver user with firefox 46 or older
+      // the capability needs to be something like:
+      // {
+      //   browserName:'firefox',
+      //   firefox_profile: zippedProfile
+      // }
+
+      // woOot!!
+      .get('http://en.wikipedia.org')
+      .then(() => console.log('here'))
+      .catch((err) => console.log('rrrrr::', err))
+    });
+
+
+
+setTimeout(() => console.log('done'), 15000)

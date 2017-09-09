@@ -66,7 +66,9 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
 
 ```js
     /******************************************************************
-     * with selenium webdriverJs
+     * with old version selenium webdriverJs
+     * WARNING: does not work with recent version of selenium-webdriver node bindings, which expect an instance of selenium-webdriver Firefox Profile page (`require('selenium-webdriver/firefox').Profile` or similar)
+     * @see: https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/profile_exports_Profile.html
      * installs firebug 
      * and make http://saadtazi.com the url that is opened on new tabs
     /******************************************************************/
@@ -129,11 +131,20 @@ Make sure you have selenium server running... or use 'selenium-webdriver/remote'
                 return;
             }
             browser = wd.promiseChainRemote();
+            // firefox 46-
+            //browser.init({
+            //  browserName:'firefox',
+            //  // set firefox_profile capabilities HERE!!!!
+            //  firefox_profile: zippedProfile
+            //}).
+            // firefox 47+
             browser.init({
-              browserName:'firefox',
-              // set firefox_profile capabilities HERE!!!!
-              firefox_profile: zippedProfile
-            }).
+                browserName:'firefox',
+                marionette: true,
+                'moz:firefoxOptions': {
+                profile: zippedProfile
+                }
+            })
             // woOot!!
             get('http://en.wikipedia.org');
         });
