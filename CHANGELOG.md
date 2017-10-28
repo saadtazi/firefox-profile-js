@@ -1,3 +1,8 @@
+# 1.1.0
+
+* update deps (big jump)
+* test with nodejs 8
+
 # 1.0.3
 
 * more TS typing fixes
