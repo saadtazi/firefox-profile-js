@@ -71,18 +71,18 @@
   "devDependencies": {
     "blanket": "~1.2.x",
     "chai": "~1.9.x",
-    "chai-fs": "~0.1.x",
     "chai-as-promised": "~4.2.x",
-    "grunt": "~0.4.x",
+    "chai-fs": "~0.1.x",
+    "grunt": "^1.0.3",
     "grunt-apidox": "~0.1.4",
-    "grunt-contrib-watch": "~0.6.x",
-    "grunt-mocha-cov": "~0.3.x",
-    "mocha": "~2.1.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-mocha-cov": "^0.4.0",
+    "mocha": "^5.2.0",
     "mocha-lcov-reporter": "0.0.1",
-    "request": "~2.53.x",
+    "request": "^2.88.0",
     "sinon": "~1.12.x",
     "sinon-chai": "~2.7.x",
-    "wd": "~0.3.x"
+    "wd": "^1.10.3"
   },
   "dependencies": {
     "adm-zip": "~0.4.x",
