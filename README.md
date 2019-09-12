@@ -11,11 +11,11 @@ Create or update Firefox Profile programmatically.
 
 ## Notes for Selenium-webdriver package users
 
-If you are using [`selenium-webdriver` package](http://seleniumhq.github.io/selenium/docs/api/javascript/), you no longer need to use this package: `selenium-webdriver` package now implements [a class that allows to create firefox profiles](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/profile.html). And this new class [doesn't play well](/saadtazi/firefox-profile-js/issues/86) with this package. Check
+If you are using [`selenium-webdriver` package](http://seleniumhq.github.io/selenium/docs/api/javascript/), you no longer need to use this package: `selenium-webdriver` package now implements [a class that allows to create firefox profiles](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox/profile.html). Check
 [this link](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/firefox.html)
-for an example on how to set your own profile with `selenium-webdriver`.
+for an example on how to set your own profile with `selenium-webdriver`. But you can still use this package with `selenium-webdriver`: here is [an example](https://github.com/juliemr/protractor-demo/issues/26). The important part in the example is to set the encoded profile on `.moz:firefoxOptions.profile` instead of on `.firefox_profile`.
 
-This package is still useful if you use another webdriver library like [`wd.js`](http://admc.io/wd/) or any other webdriver json wire protocol implementation (`webdriver.io`?).
+This package is also useful if you use another webdriver library like [`wd.js`](http://admc.io/wd/) or any other webdriver json wire protocol implementation (`webdriver.io`?).
 
 # Introduction
 
