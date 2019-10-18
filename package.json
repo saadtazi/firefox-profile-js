@@ -73,7 +73,7 @@
     "chai": "~1.9.x",
     "chai-as-promised": "~4.2.x",
     "chai-fs": "~0.1.x",
-    "grunt": "^1.0.3",
+    "grunt": "^1.0.4",
     "grunt-apidox": "~0.1.4",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-mocha-cov": "^0.4.0",
@@ -82,7 +82,7 @@
     "request": "^2.88.0",
     "sinon": "~1.12.x",
     "sinon-chai": "~2.7.x",
-    "wd": "^1.10.3"
+    "wd": "^1.11.4"
   },
   "dependencies": {
     "adm-zip": "~0.4.x",
