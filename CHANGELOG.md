@@ -1,3 +1,12 @@
+# 1.3.0
+
+* update deps
+
+# 1.2.0
+
+* update deps
+* drop support for node 4 (travis tests)
+
 # 1.1.0
 
 * update deps (big jump)
