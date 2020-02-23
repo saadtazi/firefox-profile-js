@@ -1,3 +1,7 @@
+# 1.3.1
+
+* fix regExp for parsing `user_pref`, thanks to @hbenl
+
 # 1.3.0
 
 * update deps
