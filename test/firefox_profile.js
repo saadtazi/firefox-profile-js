@@ -362,8 +362,8 @@ describe('firefox_profile', function() {
       });
     });
 
-    it('should return the addon details gathered from manifest.json even when package.json exists' , function(done) {
-      fp.addExtension(path.join(__dirname, 'extensions/webextension.with_package-json.xpi'), function(err, addonDetails) {
+    it('should read id from manifest.json\'s browser_specific_settings' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/webextension.browser_specific_settings.xpi'), function(err, addonDetails) {
         expect(addonDetails.id).to.equal('{4437251b-dbdb-4815-bd00-bd266af3f2b4}');
         expect(addonDetails.name).to.equal('Test');
         expect(addonDetails.version).to.equal('1.0');
