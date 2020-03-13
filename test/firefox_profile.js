@@ -361,6 +361,15 @@ describe('firefox_profile', function() {
         done();
       });
     });
+
+    it('should read id from manifest.json\'s browser_specific_settings' , function(done) {
+      fp.addExtension(path.join(__dirname, 'extensions/webextension.browser_specific_settings.xpi'), function(err, addonDetails) {
+        expect(addonDetails.id).to.equal('{4437251b-dbdb-4815-bd00-bd266af3f2b4}');
+        expect(addonDetails.name).to.equal('Test');
+        expect(addonDetails.version).to.equal('1.0');
+        done();
+      });
+    });
   });
 
   describe('#path', function() {
