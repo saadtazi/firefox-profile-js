@@ -1,13 +1,16 @@
 language: node_js
 node_js:
-- '6.10'
-- '8.6'
-# - '4.4'
+  # - '4.4'
+  # - '6.10'
+  # - '8.6'
+  - "10"
+  - "12"
+  - "14"
 env:
   global:
-# saucelabs
-  - secure: "Yqr5ndhUcFU+pnHsPVEo0EPaKJepA7RsASow3MH2aCFcjMf4WXi87cDCd2Z9D4gktICeZuuixDPlaTRzaADdXkbLRhgapYZer2Ug7nNa5lMmp+K7An8MMipx+2FSRqQh6af23Pso1ezY/MKQmIjahSUIdm29v/oUUvJcQ8wdB3c="
-  - secure: "LEZYzdP3k/76Ekv5NEDuiTn7GaIk+LeqhGgQ2DGD5L5/UfSrlQbJoM1MQlW0Qrde1BMJe+Gne+blfS6LMY/IffN8UeqX5zEIO/v5uzxSyaOXrl6wVIclNnCpg24iB988o9zxrR6sSDJTy6NcFquiL6AMkveD7m+qo1Pr/XQ+PRQ="
+    # saucelabs
+    - secure: "Yqr5ndhUcFU+pnHsPVEo0EPaKJepA7RsASow3MH2aCFcjMf4WXi87cDCd2Z9D4gktICeZuuixDPlaTRzaADdXkbLRhgapYZer2Ug7nNa5lMmp+K7An8MMipx+2FSRqQh6af23Pso1ezY/MKQmIjahSUIdm29v/oUUvJcQ8wdB3c="
+    - secure: "LEZYzdP3k/76Ekv5NEDuiTn7GaIk+LeqhGgQ2DGD5L5/UfSrlQbJoM1MQlW0Qrde1BMJe+Gne+blfS6LMY/IffN8UeqX5zEIO/v5uzxSyaOXrl6wVIclNnCpg24iB988o9zxrR6sSDJTy6NcFquiL6AMkveD7m+qo1Pr/XQ+PRQ="
 
 before_script: npm install -g grunt-cli
 script: grunt travis
