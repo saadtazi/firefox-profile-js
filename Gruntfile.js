@@ -1,12 +1,11 @@
-module.exports = function(grunt) {
-  'use strict';
-  grunt.loadNpmTasks('grunt-apidox');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mocha-cov');
-
+module.exports = function (grunt) {
+  "use strict";
+  grunt.loadNpmTasks("grunt-apidox");
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-mocha-cov");
 
   var coverallsRepoToken = process.env.COVERALLS_REPO_TOKEN,
-      coveralls = { serviceName: 'travis-ci' };
+    coveralls = { serviceName: "travis-ci" };
 
   // for local run...
   if (coverallsRepoToken) {
@@ -17,42 +16,46 @@ module.exports = function(grunt) {
     mochacov: {
       unit: {
         options: {
-          reporter: 'spec'
-        }
+          reporter: "spec",
+        },
       },
       coverage: {
-        reporter: 'html-cov',
+        reporter: "html-cov",
         // require: ['should']
-        output: './coverage/coverage.html'
+        output: "./coverage/coverage.html",
       },
       coveralls: {
         options: {
-          coveralls: coveralls
-        }
+          coveralls: coveralls,
+        },
       },
       options: {
-        require: './test/require.js',
-        files: ['test/*.js', 'test/cli.js', 'test/spec/*.js', '!test/require.js', '!test/extensions/**/*.js']
-      }
-
-
+        require: "./test/require.js",
+        files: [
+          "test/*.js",
+          "test/cli.js",
+          "test/spec/*.js",
+          "!test/require.js",
+          "!test/extensions/**/*.js",
+        ],
+      },
     },
     apidox: {
-      input: 'lib/firefox_profile.js',
-      output: 'doc/firefox_profile.md'
+      input: "lib/firefox_profile.js",
+      output: "doc/firefox_profile.md",
     },
     watch: {
       scripts: {
-        files: ['lib/**/*.js', 'test/**/*.js'],
-        tasks: ['mochacov'],
+        files: ["lib/**/*.js", "test/**/*.js"],
+        tasks: ["mochacov"],
         options: {
           spawn: false,
         },
-      }
-    }
+      },
+    },
   });
-  
-  grunt.registerTask('travis', ['mochacov:unit', 'mochacov:coveralls']);
 
-  grunt.registerTask('docs', 'apidox');
+  grunt.registerTask("travis", ["mochacov:unit"]);
+
+  grunt.registerTask("docs", "apidox");
 };
