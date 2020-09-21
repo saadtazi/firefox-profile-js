@@ -2,11 +2,11 @@
 
 'use strict';
 
-var chai             = require('chai');
+var chai = require('chai');
 
-global.expect          = chai.expect;
-global.testProfiles    = require('./test_profiles');
-global.sinon           = require('sinon');
+global.expect = chai.expect;
+global.testProfiles = require('./test_profiles');
+global.sinon = require('sinon');
 
 chai.use(require('sinon-chai'));
 chai.use(require('chai-fs'));

@@ -1,3 +1,7 @@
+# 4.0.0
+
+- `archiver` Major update (security fix)
+
 # 3.0.0
 
 Drop support for node 6 and 8. Now tested against 10, 12 and 14.
