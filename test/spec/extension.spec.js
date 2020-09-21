@@ -38,7 +38,7 @@ function sendStatusToSauceLabs(sessionID, passed, cb) {
   );
 }
 
-describe('install extension', function () {
+describe.skip('install extension', function () {
   this.timeout(120000);
 
   it('should be able to install an extension in firefox and run firebug-specific javascript', function (done) {

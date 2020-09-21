@@ -286,7 +286,7 @@ describe('firefox_profile', function () {
       );
     });
   });
-  describe('#encoded', function () {
+  describe.skip('#encoded', function () {
     var spy;
     beforeEach(function () {
       spy = sinon.spy(fp, 'updatePreferences');
