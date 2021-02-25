@@ -1,3 +1,7 @@
+# 4.1.0
+
+- remove jetpack dependency (thanks to @rpl)
+- update deps, thanks to @fregante
 # 4.0.0
 
 - `archiver` Major update (security fix)
