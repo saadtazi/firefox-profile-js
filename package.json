@@ -96,7 +96,6 @@
     "@rowanmanning/list-all-files": "^1.0.3",
     "adm-zip": "~0.5.x",
     "fs-extra": "~9.0.1",
-    "glob": "^7.1.6",
     "ini": "~2.0.0",
     "jszip": "^3.6.0",
     "lazystream": "~1.0.0",
