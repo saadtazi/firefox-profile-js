@@ -93,6 +93,7 @@
     "wd": "^1.11.4"
   },
   "dependencies": {
+    "@rowanmanning/list-all-files": "^1.0.3",
     "adm-zip": "~0.5.x",
     "fs-extra": "~9.0.1",
     "glob": "^7.1.6",
