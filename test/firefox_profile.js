@@ -29,7 +29,7 @@ describe('firefox_profile', function () {
 
     it('with string parameter, lock files should not be copied over', function (done) {
       var fp = new FirefoxProfile(testProfiles.emptyProfile.path);
-      expect(fp.profileDir.slice(-5)).to.be.equal('-copy');
+      expect(path.basename(fp.profileDir).slice(0, 5)).to.be.equal('copy-');
       expect(fs.statSync(fp.profileDir).isDirectory()).to.be.true;
       ['.parentlock', 'lock', 'parent.lock'].forEach(function (lockFile) {
         expect(fs.existsSync(path.join(fp.profileDir, lockFile))).to.be.false;
