@@ -94,7 +94,6 @@
   },
   "dependencies": {
     "adm-zip": "~0.5.x",
-    "archiver": "~5.2.0",
     "fs-extra": "~9.0.1",
     "ini": "~2.0.0",
     "lazystream": "~1.0.0",
