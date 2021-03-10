@@ -1,3 +1,7 @@
+# 4.2.0
+
+- Drop a lot of dependencies, thanks to @fregante
+
 # 4.1.0
 
 - remove jetpack dependency (thanks to @rpl)
