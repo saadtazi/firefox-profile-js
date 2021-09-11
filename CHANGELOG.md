@@ -1,3 +1,7 @@
+# 4.2.1
+
+- better cleanOnExit, thanks to @Gusted
+
 # 4.2.0
 
 - Drop a lot of dependencies, thanks to @fregante
@@ -6,6 +10,7 @@
 
 - remove jetpack dependency (thanks to @rpl)
 - update deps, thanks to @fregante
+
 # 4.0.0
 
 - `archiver` Major update (security fix)
