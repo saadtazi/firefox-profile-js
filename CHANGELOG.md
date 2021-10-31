@@ -1,3 +1,7 @@
+# 4.2.2
+
+- another fix for cleanOnExit
+
 # 4.2.1
 
 - better cleanOnExit, thanks to @Gusted
