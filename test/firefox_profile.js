@@ -3,6 +3,7 @@
 
 'use strict';
 
+const { expect } = require('chai');
 var path = require('path'),
   FirefoxProfile = require('../lib/firefox_profile'),
   fs = require('fs');
@@ -296,7 +297,6 @@ describe('firefox_profile', function () {
     });
     it('should work with a brand new profile', function (done) {
       fp.encoded(function (error, zippedProfileString) {
-        console.log('ici');
         expect(zippedProfileString).to.be.equal(
           testProfiles.brandNewProfile.expectedZip
         );
@@ -554,6 +554,17 @@ describe('firefox_profile', function () {
         expect(fs.existsSync(fp.path())).to.be.false;
         done();
       });
+    });
+  });
+
+  describe('#_cleanOnExit', function () {
+    it('should delete profile dir', function () {
+      expect(fs.existsSync(fp.path())).to.be.true;
+      expect(fs.statSync(fp.path()).isDirectory()).to.be.true;
+
+      // simulating a process exit...
+      const res = fp._cleanOnExit();
+      expect(fs.existsSync(fp.path())).to.be.false;
     });
   });
 });
