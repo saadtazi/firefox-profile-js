@@ -1,3 +1,7 @@
+# 4.5.0
+
+- bug fix: pass profileDirectory when copying profile ([PR](https://github.com/saadtazi/firefox-profile-js/pull/138))
+
 # 4.4.0
 
 - bug fix: return after invoking callback ([web-ext issue](https://github.com/mozilla/web-ext/issues/2826#issuecomment-1739150954))
