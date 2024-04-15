@@ -1,3 +1,7 @@
+# 4.6.0
+
+- Linux: add support for snap, flatpak and XDG_CONFIG_HOME firefox directory
+
 # 4.5.0
 
 - bug fix: pass profileDirectory when copying profile ([PR](https://github.com/saadtazi/firefox-profile-js/pull/138))
