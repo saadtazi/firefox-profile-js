@@ -1,3 +1,6 @@
+# 4.7.1
+bump adm-zip package.
+
 # 4.7.0
 
 dump dependencies, add GHA. Thank you @frigante.
